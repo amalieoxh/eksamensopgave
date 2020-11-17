@@ -1,0 +1,100 @@
+
+img{
+        padding: 100px;
+        width: 80%;
+        display: block;
+        margin-left: auto; 
+        margin-right: auto;
+}
+
+h1 {
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 100px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+}
+
+/* opret burger */
+.container {
+    padding: 30 px;
+    background-color: white;
+    margin-left: auto; 
+    margin-right: auto;
+    max-width: 500px;
+}
+
+/* login burger */
+.logincontainer {
+    padding: 30 px;
+    background-color: white;
+    margin-left: auto; 
+    margin-right: auto;
+    max-width: 500px;
+}
+
+/* tinder knap */
+h4 {
+    color: white;
+}
+
+
+/* CSS til øvre navigationsmenu */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #5d4954;
+}
+
+.logo {
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger > div {
+    width: 25px;
+    height: 2px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
