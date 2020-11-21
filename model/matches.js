@@ -12,7 +12,7 @@ for(var i=0; i<matches.length; i++){
    match.className = "match";
    
    /* displayer image */
-   match.innerHTML = '<img class="match_img" src=' + matches[i]._matchImage + ' onClick="singleMatch('+matches[i]._matchId+')">';
+   match.innerHTML = '<img class="match_img" src=' + matches[i]._matchImage + ' onClick="interMatch('+matches[i]._matchId+')">';
    // displayer navnet på det eventuelle match 
    match.innerHTML += '<div class="matchName">' + matches[i]._matchName + '</div>';
    // tager Child af matchescontainer
@@ -21,7 +21,7 @@ for(var i=0; i<matches.length; i++){
 
 //Her laves en funktion som bliver kaldt onclick ved at trykke på billedet. Funktionen skifter URL.
 
-function singleMatch (matchId) {
-   window.location.replace('singleMatch.html?matchId='+matchId);
+function interMatch (matchId) {
+   window.location.replace('interMatch.html?matchId='+matchId);
 }
 

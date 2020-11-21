@@ -5,8 +5,8 @@ class Match {
 
         this._matchId = matchId;
         this._matchName = matchName;
-        this._matchDescription= matchDescription;
-        this._matchImage= matchImage;
+        this._matchDescription = matchDescription;
+        this._matchImage = matchImage;
     
     }
 

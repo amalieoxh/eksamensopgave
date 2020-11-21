@@ -1,9 +1,11 @@
 
 
+
 //URL SearchParams. Dette er den måde hvorpå når der trykkes på et billede i shopsiden bliver man sendt til det pågældende produktsside
 //Vi bruger en indbygget klasse der hedder URLSearchParams, som giver muligheden for at hente query-parameteren 'productId'.
+
 var urlParams = new URLSearchParams(location.search);
-var productId = urlParams.get("matchId");
+var matchId = urlParams.get("matchId");
 
 //Fundamentet for at finde det rigtige produkt, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
 // overalt, til at benytte den funktion istedet. nedsat kompleksitet, øget læsbarhed, rykket en logik som stod flere steder til et(centralisering)
@@ -19,7 +21,7 @@ var container = document.createElement('container');
 container.className = "container";
 
 /* displayer image */
-container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="singleMatch"(' + match._matchId + ')">';
+container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
 /* displayer produktnavnet */
 container.innerHTML += '<div class="matchName">' + match._matchName + '</div>';
 
@@ -68,6 +70,7 @@ function addToMylikes() {
     }
 
 }
+
 
 // code review: Ifølge objektorienteret programmering, kunne denne funktion have sin egen fil
 
