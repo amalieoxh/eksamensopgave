@@ -1,19 +1,19 @@
 
-function login () {
+function login() {
     var createdUser = JSON.parse(localStorage.getItem('User'));
-    var userName = document.getElementById("username").value;
+    var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
     // Tjekker om indsatte detaljer matcher stored details. 
-    for (let i=0; i<createdUser.length; i++) {
-        if (username ===createdUser[i].userName && password == createdUser[i].password){
+    for (let i = 0; i < createdUser.length; i++) {
+        if (username === createdUser[i].username && password === createdUser[i].password) {
             
             //CurrentUser skal vise brugeroplysningerne på den bruger, som logger ind
             localStorage.setItem('currentUser', JSON.stringify(createdUser[i]));
-            location.href = "loggedIn.html";
+            location.href = "userProfile.html";
             
              // hvis brugeroplysningerne er korrekte returneres at brugeren er inde
-            alert("You are logged in");
+             alert("You are logged in");
             return true;
         }
     }

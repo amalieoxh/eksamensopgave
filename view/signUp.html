@@ -21,6 +21,9 @@
                 <a href="signUp.html">Create User</a> 
             </li>
             <li>
+                <a href="userProfile.html">My Profil</a> 
+            </li>
+            <li>
                 <a href="matches.html">Matches</a> 
             </li>
             <li>
@@ -49,7 +52,7 @@
             <div id="addressErr"></div>
             <div id="passwordErr" ></div>
         </div>
-    
+            <br>
             <p>Username</p>
     
             <input type="text" id="username" value="" placeholder="Name">
@@ -91,27 +94,30 @@
         <br>
         <br>
 
-        <p>Gender</p>
+        <div id="Gender"> 
+        <p>Gender</p> 
             <input type="radio" id="male" name="gender" value="male">
             <label for="male">Male</label><br>
             <input type="radio" id="female" name="gender" value="female">
             <label for="female">Female</label><br>
             <input type="radio" id="other" name="gender" value="other">
             <label for="other">Other</label>
-        
+        </div>
             <br>
             <br/>
-
+        <div id ="partnerGender"> 
         <p>Partners gender</p>
-            <input type="radio" id="male" name="gender" value="male">
+            <input type="radio" id="male" name="partnerGender" value="male">
             <label for="male">Male</label><br>
-            <input type="radio" id="female" name="gender" value="female">
+            <input type="radio" id="female" name="partnerGender" value="female">
             <label for="female">Female</label><br>
-            <input type="radio" id="both" name="gender" value="both">
+            <input type="radio" id="both" name="partnerGender" value="both">
             <label for="other">Both</label>
-
+        </div>
         <br>
         <br/>
+
+
        <div id="signUpButton">
         <button id="SignedUp" type="button" class="registerbtn" > Submit </button>
         </div>

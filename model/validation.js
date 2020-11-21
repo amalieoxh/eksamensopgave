@@ -1,4 +1,5 @@
-var signUpButton = document.getElementById("SignedUp").addEventListener("click",validateForm)
+var signUpButton = document.getElementById("SignedUp").addEventListener("click",validateForm);
+
 
 // benytter klassen fra user.js
 class User {
@@ -63,7 +64,7 @@ function validateForm(event) {
 //klargøre hvilke tegn username må indeholde --> disse tegn er fundet på stack Overflow
 //https://stackoverflow.com/questions/9628879/javascript-regex-username-validation
         else {
-            var regex = /^[a-zA-Z\-]+$/;
+            var regex = /^[a-zA-Z\s]+$/;
 //hvilke situationer der skal printes en errormessage defineres
             if (regex.test(username) === false){
                 printError("usernameErr", "Please enter a username using the standard alphabet");
@@ -106,7 +107,7 @@ function validateForm(event) {
         print("cityErr", "please enter a city");
     } else {
         //samme regex fra username - fra stackoverflow
-        var regexCity = /^[a-zA-Z\-]+$/;
+        var regexCity = /^[a-zA-Z\s]+$/;
         if(regexCity.test(city) === false) {
             printError("cityErr", "Cityname can only contain letters from A-Z");
         }else {
@@ -117,14 +118,15 @@ function validateForm(event) {
 
 //validating af postnummer, da datingappen er i DK, sættes antal cifte til 4 
 
-    if (zip=""){
+    if (zip==""){
         print("zipErr", "please enter a valid ZIP-code");
     } else {
         //der benyttes samme regex som til telefonnummer dog ændres antal digits til 4 fremfor 8 
         var regexZip = /^[0-9]{4}$/;
-        if (regexCity.test(zip) === false) {
-            printError("zipErr", "please enter a vild ZIP-code - hint: a ZIP-code in Denmark contains exactly 4 digits");
-        }else {
+        if (regexZip.test(zip) === false) {
+        printError("zipErr","Please enter a valid ZIP-Code, it should be exactly 4-digits") ;
+        }
+        else {
             printError("zipErr", "");
             zipErr = false;
         }
@@ -132,20 +134,20 @@ function validateForm(event) {
 
 //validering af adresse - regex fra stackoverflow
 //https://stackoverflow.com/questions/3763820/javascript-regular-expression-to-validate-an-address
-    if (address=""){
+    if (address==""){
         print("adressErr", "please enter an address"); 
     } else {
         var regexAddress = /^[a-zA-Z0-9\s,.'-]{3,}$/;
-        if (regexAddress.test(address) === false){
-            printError("addressErr", "please type a valid address");
-        }else {
-            printError("adressErr","");
+        if (regexAddress.test(address) === false) {
+            printError("addressErr", "You have to type in a valid address");
+        } else {
+            printError("addressErr", "");
             addressErr = false;
         }
     }
 
 //validering af password 
-    if (password=""){
+    if (password==""){
         printError("passwordErr", "Please type a password");
     }else {
         //password regex fra stackoverflow
@@ -171,7 +173,7 @@ function validateForm(event) {
         "ZIP-code: " + zip+ "\n" + 
         "Address: " + address + "\n" + 
         "username: " + username + "\n" + 
-        "Password" ;
+        "Password" ; 
     
 
 //Herefter oprettes en variable for oprettede bruger, som sendes til localstorage
