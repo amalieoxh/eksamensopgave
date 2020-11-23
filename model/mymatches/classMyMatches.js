@@ -11,19 +11,19 @@ class matchList {
        this.match_list = JSON.parse(localStorage.getItem("likes"));
    }
 
-newAddMatch(title, imageSrc){
-        var title =  match_list[i]._matchName;
-        var imageSrc = match_list[i]._matchImage;
-    }
+
 
    addMatchToHTML(){
        for ( let i=0 ; i < this.match_list.length; i++)
        {
           this.newAddMatch(this.match_list[i])
        }
+    }
 
-    
-  
+    newAddMatch(specificMatch){
+        var title =  specificMatch._matchName;
+        var imageSrc = specificMatch._matchImage;
+      
 
         var matchRow = document.createElement('div')
         matchRow.classList.add('match-row') //vi bruger CSS stilen 'match-row'for div elementet matchRow

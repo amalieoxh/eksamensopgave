@@ -1,16 +1,4 @@
 
-
-/*
-function restoreArrayData() {
-    $("#displayArrayDataHere").append("<table>");
-    likedUsers.forEach(function(likes) {
-        $("#displayArrayDataHere").append("<tr><td>"+likes._matchName+"</td><td>"+likes[1]+"</td></tr>")
-    })
-    $("#displayArrayDataHere").append("</table>");
-}
-onload(restoreArrayData());
-*/
-
 /* Sørger for at html siden er loadet, så de html elementer, som javascript koden benytter faktisk eksisterer.
 Sålænge document.readystate er "loading", så venter vi på at det er færdigt med at loade,
 og når eventen DOMContentLoaded indtræffer, så udfør funktionen ready. Såfremt siden allerede er loadet skal vi
@@ -45,12 +33,12 @@ function ready() {
         })
 
     }
+
 }
+
 
 //addMatch sørger for at tiløje matchet med tilhørende info til siden My Matches
 function addMatch(title, imageSrc) {
-    title = likes[i]._matchName;
-    imageSrc = likes[i]._matchImage;
     var matchRow = document.createElement('div');
     matchRow.classList.add('match-row'); //vi bruger CSS stilen 'match-row'for div elementet matchRow
     var matchItems = document.getElementsByClassName('match-items')[0]; /*vi vil senere tilføje en række til  div sektionen 'match-items'
@@ -58,8 +46,8 @@ function addMatch(title, imageSrc) {
     var matchTitleNames = matchItems.getElementsByClassName('match-item-title');
 
 
-//Generer html-indholdet til en linje med det valgte produkt (skal indeholde billede, navn på produkt, størrelse og pris), (Web Dev Simplified - youtube, 2018)
-    // laver også en knap hvor man kan vælge styk-tallet, samt en knap til at fjerne produktet fra indkøbslisten,
+//Generer html-indholdet til en linje med det valgte match, (Web Dev Simplified - youtube, 2018)
+    // laver en knap til at fjerne matchet fra matchlisten
     let matchRowContents = `   
         <div class="match-items match-column">
             <img class="match-name-image" src="${imageSrc}" width="100" height="100">
@@ -82,6 +70,7 @@ function addMatch(title, imageSrc) {
     quantityElement.value = quantity;
 }
 
+//funktion for at fjerne et match fra både HTML siden og arrayet i local storage 
 function removeMatch(event) {
     var buttonClicked = event.target; //ved button.clicked refereres der til den aktuelle element, som skal fjernes
     //Få fat i den aktuelle række, hvor ”remove” knappen er blevet aktiveret
@@ -103,8 +92,9 @@ function removeMatch(event) {
             så det pågældende element også slettes fra localStorage: inspireret fra (Stack Overflow Spice, 2016) og  (W3schools splice, 2019)*/
           
             localStorage.setItem("likes", JSON.stringify(myMatches));
-            break
+            break 
         }
+        
 
     }
 //Efter at vi har fjernet et produktemne, må vi genberegne antal matches

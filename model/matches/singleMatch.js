@@ -69,6 +69,7 @@ function addToMylikes() {
         likes.push(matchToLike);
         localStorage.setItem('likes', JSON.stringify(likes));
     }
+    window.location = ("matches.html");
 
 }
 
@@ -106,7 +107,10 @@ function addDislikes() {
         localStorage.setItem('dislikes', JSON.stringify(disLikes));
     }
 
+    window.location = ("matches.html");
 }
+
+ // window.location: returns the href (URL) of the current page
 
 
 // code review: Ifølge objektorienteret programmering, kunne denne funktion have sin egen fil
