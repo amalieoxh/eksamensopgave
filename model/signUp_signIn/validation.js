@@ -1,3 +1,4 @@
+
 var signUpButton = document.getElementById("SignedUp").addEventListener("click",validateForm);
 
 

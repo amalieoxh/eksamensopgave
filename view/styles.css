@@ -155,7 +155,7 @@ nav{
 .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 30%;
+    width: 75%;
 }
 
 .nav-links li {
@@ -168,17 +168,4 @@ nav{
     letter-spacing: 3px;
     font-weight: bold;
     font-size: 14px;
-}
-
-.burger {
-    display: none;
-    cursor: pointer;
-}
-
-.burger > div {
-    width: 25px;
-    height: 2px;
-    background-color: rgb(226, 226, 226);
-    margin: 5px;
-    transition: all 0.3s ease;
 }

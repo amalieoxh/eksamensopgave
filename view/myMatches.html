@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="matches.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -33,15 +33,24 @@
     
         </ul>
     </nav>
-<br>
-    <h3> If you find this person interesting, then pres the likebutton</h3>
-    <div id="match">
-
-        
 
 
+<section class="container content-section">
+    <h2 class="section-header">Matches</h2>
+    <div class="match-row">
+        <span class="match-item match-header match-column">Name</span>
+
+        <span class="match-quantity match-header match-column">Amount of matches</span>
     </div>
-    <script src="../model/matches//classMatch.js"></script>
-    <script src="../model/matches/singleMatch.js"></script>
-    </body>
+    <div class="match-items">  <!-- Denne sektion vil indeholde en liste over de matchede personer genereres via javascript filen myMatches.js-->
+    </div>
+
+</section>
+
+<p id="displayArrayDataHere"></p>
+
+<script src="../model/mymatches/myMatches.js"></script>
+<script src="../model/mymatches/classMyMatches.js"></script>
+
+</body>
 </html>

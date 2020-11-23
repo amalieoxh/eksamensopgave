@@ -7,6 +7,7 @@
 var urlParams = new URLSearchParams(location.search);
 var matchId = urlParams.get("matchId");
 
+'div class="singleMatchContainer">'
 //Fundamentet for at finde det rigtige produkt, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
 // overalt, til at benytte den funktion istedet. nedsat kompleksitet, øget læsbarhed, rykket en logik som stod flere steder til et(centralisering)
 var match = findMatch(matchId);
@@ -21,21 +22,21 @@ var container = document.createElement('container');
 container.className = "container";
 
 /* displayer image */
-container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
+container.innerHTML = '<img class="match_img1" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
 /* displayer produktnavnet */
 container.innerHTML += '<div class="matchName">' + match._matchName + '</div>';
+
+/*displayer beskrivelsen*/
+container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div>';
+
+// tager Child af matchContainer 
+matchContainer.appendChild(container);
 
 /* Add to cart button, som gør at detaljerne fra det valgte produkt kan videreføres til shoppingcart*/
 var addALike = '<button type="button" class ="addALikeBtn" onclick="addToMylikes()">Like';
 container.innerHTML += addALike;
 
-/*displayer beskrivelsen*/
-container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div>';
 
-/* tager Child af matchContainer */
-matchContainer.appendChild(container);
-
-//
 function addToMylikes() {
     var matchToLike = match;
 
@@ -72,6 +73,42 @@ function addToMylikes() {
 }
 
 
+//Dislike knap 
+var disLike = '<button type="button" class ="disLikeBtn" onclick="addDislikes()">Dislike';
+container.innerHTML += disLike;
+
+
+function addDislikes() {
+    var matchToDisLike = match;
+
+    //Hent vores nuværende matches fra localstorage
+    //Hvis der ikke er nogen cart, så sikrer den at det er et tomt array.
+    var disLikes = localStorage.getItem('dislikes');
+    if (disLikes == null) {
+        disLikes = [];
+    } else {
+        disLikes = JSON.parse(disLikes);
+    }
+
+    var chosenDislikes = JSON.parse(localStorage.getItem("dislikes"));
+    var i;
+    var  dislikeAlreadySelected = false;
+    for (i = 0; i < disLikes.length; i++) {
+        if (disLikes[i]._matchName === matchToDisLike._matchName){
+            alert('You have already disliked this person');
+            dislikeAlreadySelected = true;
+            break
+        }
+    }
+    if (dislikeAlreadySelected === false) {
+        alert('You have now disliked this person');
+        disLikes.push(matchToDisLike);
+        localStorage.setItem('dislikes', JSON.stringify(disLikes));
+    }
+
+}
+
+
 // code review: Ifølge objektorienteret programmering, kunne denne funktion have sin egen fil
 
 function findMatch(matchId) {
@@ -81,3 +118,5 @@ function findMatch(matchId) {
         }
     }
 }
+
+'</div>'
