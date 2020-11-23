@@ -28,8 +28,7 @@ function ready() {
              function(key) udføres for hvert index. (Marijn Haverbeke, 2019 p. 95) */
 
              
-            addMatch(key._matchName, key._matchImage);
-            updateMatchesAmount(); //Opdaterer
+            addMatch(key._matchName, key._matchImage, key._quantity);
         })
 
     }
@@ -38,7 +37,7 @@ function ready() {
 
 
 //addMatch sørger for at tiløje matchet med tilhørende info til siden My Matches
-function addMatch(title, imageSrc) {
+function addMatch(title, imageSrc, quantity) {
     var matchRow = document.createElement('div');
     matchRow.classList.add('match-row'); //vi bruger CSS stilen 'match-row'for div elementet matchRow
     var matchItems = document.getElementsByClassName('match-items')[0]; /*vi vil senere tilføje en række til  div sektionen 'match-items'
@@ -75,8 +74,8 @@ function removeMatch(event) {
     var buttonClicked = event.target; //ved button.clicked refereres der til den aktuelle element, som skal fjernes
     //Få fat i den aktuelle række, hvor ”remove” knappen er blevet aktiveret
     var pickedMatchRow = buttonClicked.parentElement.parentElement;
-    //De næste to linjer udtrækker produkt navnet (titleElement.innerText) fra den aktuelle række
-    var titleElement = pickedMatchRow.getElementsByClassName('match-item')[0];
+    //De næste to linjer udtrækker match navnet (titleElement.innerText) fra den aktuelle række
+    var titleElement = pickedMatchRow.getElementsByClassName('match-items')[0];
     var title = titleElement.innerText;
     buttonClicked.parentElement.parentElement.remove(); // fjerner den aktuelle html række, for det produkt, som brugeren ønskede fjernet.
 
@@ -97,10 +96,38 @@ function removeMatch(event) {
         
 
     }
-//Efter at vi har fjernet et produktemne, må vi genberegne antal matches
-    updateMatchesAmount ()
+
 }
 
 /* code review: Praktisk set vil det være smart, hvis metoderne der bruges i myMatches.js hørte til en klasse.
  Dette vil være nyttigt, da den resterende del af programmet af opdelt i units via klasser.
  Derfor vil det ogå giv god mening, at etablerer en klasse for my matches. */
+
+
+ //quantityChanged funktionen sørger for at brugeren kan ændre quantity værdien for det enkelte produkt hørende til en given html række.
+function quantityChanged(event) {
+
+    var buttonClicked = event.target;
+    var pickedMatchRow = buttonClicked.parentElement.parentElement;
+    var titleElement = pickedMatchRow.getElementsByClassName('match-item')[0];
+    var title = titleElement.innerText;
+
+    //Hvis brugeren skriver en ikke numerisk værdi eller værdien er mindre end 1, sættet stk. antallet til 1
+    if (isNaN(buttonClicked.value) || buttonClicked.value <= 0) {
+        buttonClicked.value = 1 // quantity kan ikke blive mindre end 1
+    }
+
+    //Vi skal sørge for at quantity-værdien gemt i local storage modsvarer “change” værdien på html siden.
+    var myMatches = JSON.parse(localStorage.getItem("likes"));
+    var i;
+    //Indlæst shoppingliste fra ‘cart’ på localStorage og find det aktuelle produkt og størrelse. Opdater quantity værdien for produktet
+    for (i = 0; i < myMatches.length; i++) {
+        if (myMatches[i]._matchName === title){
+            myMatches[i]._quantity = parseInt(buttonClicked.value);//the buttonClickedValue er en string, som konverteres til integer pga. parseINT
+            localStorage.setItem("likes", JSON.stringify(myMatches)); // værdien for quantity gemmes i localStorage
+            break
+        }
+
+    }
+   
+}
