@@ -1,4 +1,3 @@
-
 /* Sørger for at html siden er loadet, så de html elementer, som javascript koden benytter faktisk eksisterer.
 Sålænge document.readystate er "loading", så venter vi på at det er færdigt med at loade,
 og når eventen DOMContentLoaded indtræffer, så udfør funktionen ready. Såfremt siden allerede er loadet skal vi
@@ -21,7 +20,7 @@ function ready() {
     var myMatches = JSON.parse(localStorage.getItem("likes")); //dette skal ændres til matches
 
     if(myMatches != null) {  //Tjek om der er gemt et match array object i localStorage
-        //For hvert match i myMatches arrayet tilføjer vi det til siden my matches ved kald til addItemToCart
+        //For hvert match i myMatches arrayet tilføjer vi det til siden my matches 
 
         
         myMatches.forEach(function (key) { /*forEach løkken løber igennem index for myMatchesarrayet og
@@ -36,7 +35,7 @@ function ready() {
 }
 
 
-//addMatch sørger for at tiløje matchet med tilhørende info til siden My Matches
+//addMatch sørger for at tilføje matchet med tilhørende info til siden My Matches
 function addMatch(title, imageSrc, quantity) {
     var matchRow = document.createElement('div');
     matchRow.classList.add('match-row'); //vi bruger CSS stilen 'match-row'for div elementet matchRow
@@ -54,19 +53,19 @@ function addMatch(title, imageSrc, quantity) {
                    
         </div>
     
-        <div class="match-quantity cart-column">
+        <div class="match-quantity match-column">
             <input class="match-quantity-input" type="number" value="1">
             <button class="btn btn-danger" type="button">REMOVE</button>
         </div>`
 
   matchRow.innerHTML = matchRowContents; //html koden indeholdt i matchRowContents variablen indøres i elementet matchRow
     matchItems.append(matchRow) //matchRow tilføjes til sektionen matchItems på html siden
-    //De næste to linjer Sørger for at henholdsvis removeCartItem og quantityChanged funktionerne kaldes når der trykkes på de to knapper
+    //De næste to linjer Sørger for at henholdsvis removeMatch funktion kaldes når der trykkes på knappen
     matchRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeMatch);
-    matchRow.getElementsByClassName('match-quantity-input')[0].addEventListener('change', quantityChanged);
+   // matchRow.getElementsByClassName('match-quantity-input')[0].addEventListener('change', quantityChanged);
     //Sørg for at ’change’ knappen initialiseres til den sidst valge quantity værdi
-    var quantityElement = matchRow.getElementsByClassName('match-quantity-input')[0];
-    quantityElement.value = quantity;
+   // var quantityElement = matchRow.getElementsByClassName('match-quantity-input')[0];
+  //  quantityElement.value = quantity;
 }
 
 //funktion for at fjerne et match fra både HTML siden og arrayet i local storage 
@@ -120,7 +119,7 @@ function quantityChanged(event) {
     //Vi skal sørge for at quantity-værdien gemt i local storage modsvarer “change” værdien på html siden.
     var myMatches = JSON.parse(localStorage.getItem("likes"));
     var i;
-    //Indlæst shoppingliste fra ‘cart’ på localStorage og find det aktuelle produkt og størrelse. Opdater quantity værdien for produktet
+    //Indlæst "likes" på localStorage. Opdater quantity værdien for produktet
     for (i = 0; i < myMatches.length; i++) {
         if (myMatches[i]._matchName === title){
             myMatches[i]._quantity = parseInt(buttonClicked.value);//the buttonClickedValue er en string, som konverteres til integer pga. parseINT
