@@ -22,17 +22,17 @@ var container = document.createElement('container');
 container.className = "container";
 
 /* displayer image */
-container.innerHTML = '<img class="match_img1" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
+container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
 /* displayer produktnavnet */
 container.innerHTML += '<div class="matchName">' + match._matchName + '</div>';
 
 /*displayer beskrivelsen*/
-container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div>';
+container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div> <br>' ;
 
 // tager Child af matchContainer 
 matchContainer.appendChild(container);
 
-/* Add to cart button, som gør at detaljerne fra det valgte produkt kan videreføres til shoppingcart*/
+/* Add A Like button, som gør at detaljerne fra det valgte match kan videreføres til My Matcges*/
 var addALike = '<button type="button" class ="addALikeBtn" onclick="addToMylikes()">Like';
 container.innerHTML += addALike;
 
@@ -41,7 +41,7 @@ function addToMylikes() {
     var matchToLike = match;
 
     //Hent vores nuværende matches fra localstorage
-    //Hvis der ikke er nogen cart, så sikrer den at det er et tomt array.
+    //Hvis der ikke er nogen likes, så sikrer den at det er et tomt array.
     var likes = localStorage.getItem('likes');
     if (likes == null) {
         likes = [];
@@ -83,7 +83,7 @@ function addDislikes() {
     var matchToDisLike = match;
 
     //Hent vores nuværende matches fra localstorage
-    //Hvis der ikke er nogen cart, så sikrer den at det er et tomt array.
+    //Hvis der ikke er nogle dislikes, så sikrer den at det er et tomt array.
     var disLikes = localStorage.getItem('dislikes');
     if (disLikes == null) {
         disLikes = [];

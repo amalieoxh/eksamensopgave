@@ -28,3 +28,4 @@ var match4 = new Match(4, "Frederik", "40 år - kan godt lide at flyve", "../ima
 
 //  laver et array for de mulige matches, så de kan benyttets i et loop 
 var matches = [match1, match2, match3, match4];
+
