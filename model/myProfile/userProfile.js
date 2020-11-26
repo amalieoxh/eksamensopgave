@@ -23,53 +23,20 @@ function logOut() {
 var removeItem = document.getElementById("deleteBtn").addEventListener("click",deleteAccount);
 
 
-//funktion for at fjerne et match fra både HTML siden og arrayet i local storage 
-function deleteAccount() {
-    //var buttonClicked = event.target; //ved button.clicked refereres der til den aktuelle element, som skal fjernes
-    //Få fat i den aktuelle række, hvor ”remove” knappen er blevet aktiveret
-    /*Udover at fjerne matches på html siden skal vi også fjerne matches fra match listen,
-    som er gemt som ”likes” på localStorage. Vi finder det object, som svarer til matchnavnet
-     og fjerner det fra localstorage ved at udskifte arrayed i localStorage med et nyt array, hvor matched er fjernet */
-   var accounts = JSON.parse(localStorage.getItem("User"));
-   var current = JSON.parse(localStorage.getItem("currentUser"));
-    var i;
-    for (i = 0; i < accounts.length; i++) {
-        if (accounts[i]._username == current._username){
-            accounts.splice(i,1); /*der slettes et element ved position index i myMatches arrayet,
-            så det pågældende element også slettes fra localStorage: inspireret fra (Stack Overflow Spice, 2016) og  (W3schools splice, 2019)*/
-          
-            localStorage.setItem("User", JSON.stringify(accounts));
-            
-            return localStorage.removeItem('currentUser'); 
-            
-        }
-    
 
-    }
+function deleteAccount() {
+    var accounts = JSON.parse(localStorage.getItem("User"));
+    var current = JSON.parse(localStorage.getItem("currentUser"));
+
+    accounts = accounts.filter(account => account.username !== current.username);
+    console.log(accounts);
+
+    localStorage.setItem("User", JSON.stringify(accounts));
+
+    return localStorage.removeItem('currentUser'); 
 }
 
 
-
-
-/*
-var removeItem = document.getElementById("deleteBtn").addEventListener("click",deleteAccount);
-
-function deleteAccount() {
-   var accounts = JSON.parse(localStorage.getItem("User"));
-   var current = JSON.parse(localStorage.getItem("currentUser"));
-    var i;
-    for (i = 0; i < accounts.length; i++) {
-        if (accounts[i]._username == current._username){
-            accounts.splice(i,1); 
-            localStorage.setItem("User", JSON.stringify(accounts));
-            
-            return localStorage.removeItem('currentUser'); 
-             
-        }
-        
-
-}}
-*/
 
 
 
