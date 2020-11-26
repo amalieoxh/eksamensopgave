@@ -1,19 +1,19 @@
 
 
 
-//URL SearchParams. Dette er den måde hvorpå når der trykkes på et billede i shopsiden bliver man sendt til det pågældende produktsside
-//Vi bruger en indbygget klasse der hedder URLSearchParams, som giver muligheden for at hente query-parameteren 'productId'.
+//URL SearchParams. Dette er den måde hvorpå når der trykkes på et billede i match oversigten bliver man sendt til det pågældende match siden
+//Vi bruger en indbygget klasse der hedder URLSearchParams, som giver muligheden for at hente query-parameteren 'matchId'.
 
 var urlParams = new URLSearchParams(location.search);
 var matchId = urlParams.get("matchId");
 
 'div class="singleMatchContainer">'
-//Fundamentet for at finde det rigtige produkt, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
+//Fundamentet for at finde det rigtige mulige match, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
 // overalt, til at benytte den funktion istedet. nedsat kompleksitet, øget læsbarhed, rykket en logik som stod flere steder til et(centralisering)
 var match = findMatch(matchId);
 
 // DOM - kommenter på valget af måde for udførsel af DOM. Dynamisk.
-/* variabel som indhenter productsContainer i HTMLfilen */
+/* variabel som indhenter matchContainer i HTMLfilen */
 var matchContainer = document.getElementById('match');
 // der laves enn container , hvori det valgte match bliver vist med tilhørende information
 var container = document.createElement('container');
@@ -23,7 +23,7 @@ container.className = "container";
 
 /* displayer image */
 container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
-/* displayer produktnavnet */
+/* displayer matchnavnet */
 container.innerHTML += '<div class="matchName">' + match._matchName + '</div>';
 
 /*displayer beskrivelsen*/

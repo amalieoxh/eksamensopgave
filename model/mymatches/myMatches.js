@@ -71,12 +71,12 @@ function removeMatch(event) {
     //De næste to linjer udtrækker match navnet (titleElement.innerText) fra den aktuelle række
     var titleElement = pickedMatchRow.getElementsByClassName('match-items')[0];
     var title = titleElement.innerText;
-    buttonClicked.parentElement.parentElement.remove(); // fjerner den aktuelle html række, for det produkt, som brugeren ønskede fjernet.
+    buttonClicked.parentElement.parentElement.remove(); // fjerner den aktuelle html række, for det match, som brugeren ønskede fjernet.
 
 
-    /*Udover at fjerne produktet på html siden skal vi også fjerne produktet fra match listen,
+    /*Udover at fjerne matches på html siden skal vi også fjerne matches fra match listen,
     som er gemt som ”likes” på localStorage. Vi finder det object, som svarer til matchnavnet
-     og fjerner det fra localstorage ved at udskifte arrayed i localStorage med et nyt array, hvor produktet er fjernet */
+     og fjerner det fra localstorage ved at udskifte arrayed i localStorage med et nyt array, hvor matched er fjernet */
    var myMatches = JSON.parse(localStorage.getItem("likes"));
     var i;
     for (i = 0; i < myMatches.length; i++) {

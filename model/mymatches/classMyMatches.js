@@ -11,8 +11,6 @@ class matchList {
        this.match_list = JSON.parse(localStorage.getItem("likes"));
    }
 
-
-
    addMatchToHTML(){
        for ( let i=0 ; i < this.match_list.length; i++)
        {
@@ -43,16 +41,13 @@ class matchList {
                    
         </div>
         <div class="match-quantity match-column">
-            <input class="match-quantity-input" type="number" value="1">
             <button class="btn btn-danger" type="button">REMOVE</button>
         </div>`
         matchRow.innerHTML = matchRowContents; //html koden indeholdt i matchRowContents variablen indøres i elementet matchRow
         matchItems.append(matchRow) //matchRow tilføjes til sektionen matchItems på html siden
         //Sørg for at henholdsvis removeMatchItem og quantityChanged funktionerne kaldes når der trykkes på de to knapper
         matchRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeMatchItem)
-        matchRow.getElementsByClassName('match-quantity-input')[0].addEventListener('change', quantityChanged)
-        var quantityElement = matchRow.getElementsByClassName('match-quantity-input')[0]
-        quantityElement.value = quantity;
+        
     }
 
 }
