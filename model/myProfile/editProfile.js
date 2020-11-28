@@ -1,3 +1,5 @@
+const { each } = require("jquery");
+
 // Create an event listner for the submit button
 document.getElementById('editBtn').addEventListener('click',updateInfo);
 
@@ -17,7 +19,8 @@ class updatedUser {
 
 // Function that updates personal info
 function updateInfo(){
-    
+
+
     //get the value from HTML form 
     username = document.getElementById("editUsername").value;
     phone = document.getElementById("editPhone").value;
@@ -43,6 +46,43 @@ function updateInfo(){
     currentUser["password"] = password;
 
 
+
+// Save back to localStorage
+window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
+//window.localStorage.setItem('User', JSON.stringify(changedUser));
+window.location = ("userProfile.html");
+
+    var updatesUser = JSON.parse(localStorage.getItem("User"));
+
+    //pusher ny bruger ind i et array 
+
+
+    var i;
+    for (i = 0; i < updatesUser.length; i++) {
+        email = updatesUser[i].email 
+        console.log(address);
+        if /* check om email er det samme så:*/
+             updatesUser[i] = new updatedUser (username, password, phone, city, zip, address, email)
+
+    }
+
+    updatesUser.push(new updatedUser (username, password, phone, city, zip, address, email));
+    console.log(updatesUser);
+
+    //createduser laves til en string 
+    var updatesUser = JSON.stringify(createdUser);
+    //tilføjes til local storage
+    localStorage.setItem("User", updatesUser);
+    //tilføjer en alert 
+    alert('New User has been created');
+
+
+}
+
+
+
+
+
 //constructor(username, password, phone, city, zip, address, email, gender)
 
 /*
@@ -60,12 +100,3 @@ function updateInfo(){
     //tilføjer en alert 
     alert('New User has been created');
 */
-
-
-
-// Save back to localStorage
-window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
-//window.localStorage.setItem('User', JSON.stringify(changedUser));
-window.location = ("userProfile.html");
-}
-

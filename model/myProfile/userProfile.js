@@ -19,10 +19,7 @@ function logOut() {
 }
 
 
-
 var removeItem = document.getElementById("deleteBtn").addEventListener("click",deleteAccount);
-
-
 
 function deleteAccount() {
     var accounts = JSON.parse(localStorage.getItem("User"));
@@ -34,6 +31,7 @@ function deleteAccount() {
     localStorage.setItem("User", JSON.stringify(accounts));
 
     return localStorage.removeItem('currentUser'); 
+
 }
 
 
