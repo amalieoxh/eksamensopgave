@@ -1,5 +1,5 @@
 
-var signUpButton = document.getElementById("SignedUp").addEventListener("click",validateForm);
+//var signUpButton = document.getElementById("SignedUp").addEventListener("click",validateForm);
 
 
 // benytter klassen fra user.js
@@ -13,6 +13,7 @@ class User {
         this.address = address;
         this.email = email;
         this.gender = gender;
+        // this.id = id; Lav en funktion der genererer id til en bruger. 
     }
 }
 
@@ -39,7 +40,7 @@ function printError(elemID, hintMsg) {
 
 //validate form funktionen defineres
 function validateForm(event) {
-    event.preventDefault 
+    //event.preventDefault 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
     var phone = document.getElementById("phone").value;
@@ -195,7 +196,7 @@ function validateForm(event) {
     console.log(newUserAdd);
 
     // window.location: returns the href (URL) of the current page
-    window.location = ("signIn.html");
+    //window.location = ("signIn.html");
 
 }
 }

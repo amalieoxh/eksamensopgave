@@ -1,17 +1,11 @@
-
-
-
 //URL SearchParams. Dette er den måde hvorpå når der trykkes på et billede i match oversigten bliver man sendt til det pågældende match siden
 //Vi bruger en indbygget klasse der hedder URLSearchParams, som giver muligheden for at hente query-parameteren 'matchId'.
-
-var urlParams = new URLSearchParams(location.search);
-var matchId = urlParams.get("matchId");
 
 'div class="singleMatchContainer">'
 //Fundamentet for at finde det rigtige mulige match, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
 // overalt, til at benytte den funktion istedet. nedsat kompleksitet, øget læsbarhed, rykket en logik som stod flere steder til et(centralisering)
-var match = findMatch(matchId);
-
+var match = JSON.parse(localStorage.getItem('founduser'));
+console.log(match)
 // DOM - kommenter på valget af måde for udførsel af DOM. Dynamisk.
 /* variabel som indhenter matchContainer i HTMLfilen */
 var matchContainer = document.getElementById('match');
@@ -21,13 +15,15 @@ var container = document.createElement('container');
 /* Her bliver de forskellige properties fra klassen udvalgt og kan displayes på siden */
 container.className = "container";
 
-/* displayer image */
-container.innerHTML = '<img class="match_img" src=' + match._matchImage + ' onClick ="interMatch"(' + match._matchId + ')">';
+/* displayer image 
+container.innerHTML = '<img class="match_img"' + ' onClick ="interMatch"(' + match._matchId + ')">';
+*/
 /* displayer matchnavnet */
-container.innerHTML += '<div class="matchName">' + match._matchName + '</div>';
+container.innerHTML += '<div class="matchName">' + match.username + '</div>';
+// ligesom linjen herover, skal man kunne se alle oplysninger om brugeren.
 
 /*displayer beskrivelsen*/
-container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div> <br>' ;
+//container.innerHTML += '<div class="matchDescription"> Description: ' + match._matchDescription + '</div> <br>' ;
 
 // tager Child af matchContainer 
 matchContainer.appendChild(container);

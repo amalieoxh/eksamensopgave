@@ -1,27 +1,89 @@
+document.addEventListener("DOMContentLoaded", function() {
+   const xhr = new XMLHttpRequest();
+   xhr.responseType = "json"
 
-//henter matchescontainer fra HTMLfilen */
-var matchesContainer = document.getElementById('matchesContainer');
+   //henter matchescontainer fra HTMLfilen 
+   var matchesContainer = document.getElementById('matchesContainer');
+   //console.log(matchesContainer)
 
-// for-loopet som tager arrayet og looper gennem matches
-for(var i=0; i<matches.length; i++){
+   xhr.addEventListener("readystatechange", function() {
+      if(this.readyState === 4) {
+         var allMatches = this.response;
+         console.log(allMatches)
+       
+            // for-loopet som tager arrayet og looper gennem matches
+            for(var i=0; i< allMatches.length; i++){
 
-// variabel en div genenem variablen match, herved simplificeres HTML 
-   var match = document.createElement('div');
+            // variabel en div genenem variablen match, herved simplificeres HTML 
+            var match = document.createElement('div');
+         
+            // Her bliver de forskellige properties fra klassen udvalgt og kan displayes på siden 
+            match.className = "match";
+            
+            // displayer image 
+            match.innerHTML += '<div class="matchName" id='+allMatches[i].username+' onClick="interMatch('+allMatches[i].username+')">'+allMatches[i].username+'</div>';
+            // displayer navnet på det eventuelle match 
+         
+            // tager Child af matchescontaine
+            matchesContainer.appendChild(match);
+            }
+            
+         }
 
-   // Her bliver de forskellige properties fra klassen udvalgt og kan displayes på siden 
-   match.className = "match";
+      })
+
+      
+         
+
+      xhr.open("GET", "http://localhost:2500/matches", true);
+         
+      // definerer at det er en JSON-fil der skal arbejdes med
+      xhr.setRequestHeader("Content-Type", "application/json");
+         
+      // Sender http requested afsted. Den sender altså den data som er indtastet af brugeren, til vores server (localhost). 
+      xhr.send();
+               
    
-   /* displayer image */
-   match.innerHTML = '<img class="match_img" src=' + matches[i]._matchImage + ' onClick="interMatch('+matches[i]._matchId+')">';
-   // displayer navnet på det eventuelle match 
-   match.innerHTML += '<div class="matchName">' + matches[i]._matchName + '</div>';
-   // tager Child af matchescontainer
-   matchesContainer.appendChild(match);
+   
+   
+})
+
+function findMatch(username) {
+   
+   
+   
+   
 }
 
-//Her laves en funktion som bliver kaldt onclick ved at trykke på billedet. Funktionen skifter URL.
+async function interMatch(username){
+   const xhr = new XMLHttpRequest();
+   xhr.responseType = "json"
 
-function interMatch (matchId) {
-   window.location.replace('interMatch.html?matchId='+matchId);
+   xhr.addEventListener("readystatechange", function() {
+      if(this.readyState === 4) {
+         var allMatches = this.response;
+         for (var i = 0; i < allMatches.length; i++) {            
+            if (allMatches[i].username == username.id) {
+                let founduser =  allMatches[i];
+                localStorage.setItem('founduser', JSON.stringify(founduser))
+                window.location = "../view/intermatch.html"
+            }
+        }
+      }
+
+   })
+
+      
+         
+
+      xhr.open("GET", "http://localhost:2500/matches", true);
+         
+      // definerer at det er en JSON-fil der skal arbejdes med
+      xhr.setRequestHeader("Content-Type", "application/json");
+         
+      // Sender http requested afsted. Den sender altså den data som er indtastet af brugeren, til vores server (localhost). 
+      xhr.send();
+               
+
+   
 }
-

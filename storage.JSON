@@ -1,0 +1,20 @@
+[
+  {
+    "username": "brugernavn",
+    "phone": "60700512",
+    "city": "Greve",
+    "zip": "2670",
+    "address": "hej alle 123",
+    "email": "mafaber@hotmail.dk",
+    "password": "hej123hej"
+  },
+  {
+    "username": "Mathias",
+    "phone": "60700512",
+    "city": "Greve",
+    "zip": "2670",
+    "address": "hej alle 123",
+    "email": "mafaber@hotmail.dk",
+    "password": "Frederik1"
+  }
+]

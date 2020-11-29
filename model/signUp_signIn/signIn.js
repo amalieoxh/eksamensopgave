@@ -1,30 +1,47 @@
+    
+    //si.addEventListener('click', ()=> {
+        function signIn(){
+            const xhr = new XMLHttpRequest();
+            xhr.responseType = "json"
+        
+            //function her
+            //SignIn function
+                //var createdUser = JSON.parse(localStorage.getItem('User'));
+                var username = document.getElementById("username");
+                var password = document.getElementById("password");
+        
+                console.log(username)
+                var loginData = {
+                    username : username.value,
+                    password : password.value,
+                }
+        
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    const respo = this.response 
+                    console.log(respo)
+                    if (respo.err !== 'Failed'){
+                        // alert success
+                        // gem noget i localstorage??
+                        localStorage.setItem('currentUser', JSON.stringify(respo));
+        
+        
+                        window.location.href = ("../view/userProfile.html")
+                        
+                    }
+                    console.log(respo); //Til at se, om request kommer tilbage
+                }
 
-function login() {
-    var createdUser = JSON.parse(localStorage.getItem('User'));
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    // Tjekker om indsatte detaljer matcher stored details. 
-    for (let i = 0; i < createdUser.length; i++) {
-        if (username === createdUser[i].username && password === createdUser[i].password) {
-            
-            //CurrentUser skal vise brugeroplysningerne på den bruger, som logger ind
-            localStorage.setItem('currentUser', JSON.stringify(createdUser[i]));
-            location.href = "userProfile.html";
-            
-             // hvis brugeroplysningerne er korrekte returneres at brugeren er inde
-             alert("You are logged in");
-            return true;
+             })
+            // "Åbner" vores http request og angiver at det er POST request fra serveren på localhost:3000
+            console.log('her')
+            xhr.open("POST", "http://localhost:2500/signIn", true);
+        
+            // definerer at det er en JSON-fil der skal arbejdes med
+            xhr.setRequestHeader("Content-Type", "application/json");
+        
+            // Sender http requested afsted. Den sender altså den data som er indtastet af brugeren, til vores server (localhost). 
+            xhr.send(JSON.stringify(loginData));
+    
         }
-    }
-
-   //hvis oplsyningerne er forkerte returneres nedenstående fejlmeddelelse
-    alert("Wrong username or password. If you don't have an account, please sign in");
-}
-
-//benytter en eventlistener ved signIn, default benyttes, så den ikke konstant refresher, men kommer videre til at funktionen kaldes
-document.getElementById('signIn').addEventListener('click', function (event) {
-    event.preventDefault();
-    login();
-});
-
+    

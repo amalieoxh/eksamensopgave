@@ -1,27 +1,20 @@
 {
-  "name": "routes",
+  "name": "eksamensprojekt",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "API.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Server.js"
+    "start": "nodemon API.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jquery": "^3.5.1",
-    "nodemon": "^2.0.6"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amalieoxh/eksamensopgave.git"
-  },
-  "bugs": {
-    "url": "https://github.com/amalieoxh/eksamensopgave/issues"
-  },
-  "homepage": "https://github.com/amalieoxh/eksamensopgave#readme"
+    "fs": "0.0.1-security",
+    "http-server": "^0.12.3",
+    "regex": "^0.1.1"
+  }
 }
