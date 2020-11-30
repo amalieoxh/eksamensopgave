@@ -5,7 +5,7 @@
 //Fundamentet for at finde det rigtige mulige match, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
 // overalt, til at benytte den funktion istedet. nedsat kompleksitet, øget læsbarhed, rykket en logik som stod flere steder til et(centralisering)
 var match = JSON.parse(localStorage.getItem('founduser'));
-console.log(match)
+//console.log(match)
 // DOM - kommenter på valget af måde for udførsel af DOM. Dynamisk.
 /* variabel som indhenter matchContainer i HTMLfilen */
 var matchContainer = document.getElementById('match');
@@ -29,13 +29,67 @@ container.innerHTML += '<div class="matchName">' + match.username + '</div>';
 matchContainer.appendChild(container);
 
 /* Add A Like button, som gør at detaljerne fra det valgte match kan videreføres til My Matcges*/
-var addALike = '<button type="button" class ="addALikeBtn" onclick="addToMylikes()">Like';
+var addALike = '<button type="button" onclick="addToLike()" class ="addALikeBtn">Like';
 container.innerHTML += addALike;
+
+
+ // Ved at sætte noget ind i input feltet på html siden, og trykke submit, gemmes dataen i en JSON fil. 
+function addToLike() {
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "json"
+    console.log("hej")
+
+   //HTTP-request
+   let foundUser = JSON.parse(localStorage.getItem("founduser"))
+   console.log(foundUser)
+   let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+   console.log(currentUser)
+
+    // Pusher current user ind på likesarray indeks 0, og herefter den der likes
+    var likes = {
+        username : currentUser.username,
+        likedUser : foundUser.username
+    }
+    /*
+    if(likes[0] != currentUser.username){
+        likes.push(currentUser.username)
+        likes.push(foundUser.username)
+    }else{
+    likes.push(foundUser.username)
+    }
+   console.log(likes)
+   */
+
+   // Lav en funktion der pusher dit eget username ind plus den likede persons username
+   // if statement: hvis dit eget username allerede er i dette array, push kun likede persons username. 
+
+    // idk den tjekker vel for om siden er klar, og sender en fejl hvis den ikk er
+    xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+        const respo = this.response 
+        console.log(respo); //Til at se, om request kommer tilbage
+        if (respo.err == 'Failed'){
+           alert("You already liked this person")
+            
+        }
+   
+    }
+    });
+
+    // "Åbner" vores http request og angiver at det er POST request fra serveren på localhost:3000
+    xhr.open("POST", "http://localhost:2500/interMatch", true);
+
+    // definerer at det er en JSON-fil der skal arbejdes med
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Sender http requested afsted. Den sender altså den data som er indtastet af brugeren, til vores server (localhost). 
+    xhr.send(JSON.stringify(likes));
+
+}
 
 
 function addToMylikes() {
     var matchToLike = match;
-
     //Hent vores nuværende matches fra localstorage
     //Hvis der ikke er nogen likes, så sikrer den at det er et tomt array.
     var likes = localStorage.getItem('likes');
@@ -44,7 +98,6 @@ function addToMylikes() {
     } else {
         likes = JSON.parse(likes);
     }
-
     //tjekker om identitisk match er tilføjet, således den ikke popper op dobbelt. Da der ikke er modificeret i likes bunken til
     //at kunne tage i imod flere af samme og stacke.
     /*  code review: Man kan ikke tilføje et match flere gange, hvilket ikke er helt optimalt, da man skal have mulighed
@@ -76,34 +129,44 @@ container.innerHTML += disLike;
 
 
 function addDislikes() {
-    var matchToDisLike = match;
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "json"
+    console.log("hej")
 
-    //Hent vores nuværende matches fra localstorage
-    //Hvis der ikke er nogle dislikes, så sikrer den at det er et tomt array.
-    var disLikes = localStorage.getItem('dislikes');
-    if (disLikes == null) {
-        disLikes = [];
-    } else {
-        disLikes = JSON.parse(disLikes);
+    //HTTP-request
+    let foundUser = JSON.parse(localStorage.getItem("founduser"))
+    console.log(foundUser)
+    let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+    console.log(currentUser)
+
+    // Pusher current user ind på likesarray indeks 0, og herefter den der likes
+    var disLikes = {
+        username : currentUser.username,
+        disLikedUser : foundUser.username
     }
-
-    var chosenDislikes = JSON.parse(localStorage.getItem("dislikes"));
-    var i;
-    var  dislikeAlreadySelected = false;
-    for (i = 0; i < disLikes.length; i++) {
-        if (disLikes[i]._matchName === matchToDisLike._matchName){
-            alert('You have already disliked this person');
-            dislikeAlreadySelected = true;
-            break
+  
+    // idk den tjekker vel for om siden er klar, og sender en fejl hvis den ikk er
+    xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+        const respo = this.response 
+        console.log(respo); //Til at se, om request kommer tilbage
+        if (respo.err == 'Failed'){
+            alert("You already disliked this person")
+            
         }
+    
     }
-    if (dislikeAlreadySelected === false) {
-        alert('You have now disliked this person');
-        disLikes.push(matchToDisLike);
-        localStorage.setItem('dislikes', JSON.stringify(disLikes));
-    }
+    });
 
-    window.location = ("matches.html");
+    // "Åbner" vores http request og angiver at det er POST request fra serveren på localhost:3000
+    xhr.open("POST", "http://localhost:2500/interMatchDis", true);
+
+    // definerer at det er en JSON-fil der skal arbejdes med
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Sender http requested afsted. Den sender altså den data som er indtastet af brugeren, til vores server (localhost). 
+    xhr.send(JSON.stringify(disLikes));
+
 }
 
  // window.location: returns the href (URL) of the current page

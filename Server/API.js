@@ -65,8 +65,6 @@ app.post('/signIn', (req, res)=> {
 
     }
     res.json({err:"Failed"});
-
-
 })
 
 
@@ -75,4 +73,68 @@ app.get('/matches', (req, res)=> {
     res.json(allMatches)
 })
 
+// like knap: tag data fra localstorage (founduser), og send dette til en likes.json fil. 
+app.post('/interMatch', (req, res)=> {
+    let interMatchData = req.body;
+    let likesArray = JSON.parse(fs.readFileSync("likes.JSON"))
+    likesArray.push(interMatchData)
+    console.log(likesArray, "hej")
+    fs.writeFileSync("likes.JSON", JSON.stringify(likesArray, null, 2));
+    res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + liked bruger til JSON', likesArray}));
+    /*
+    var likeAlreadyMade = false; 
+    for (i = 0; i < likesArray; i++){
+        for (j = 0; j < interMatchData; j++){
+            if (likesArray[i].username === interMatchData[j].username && likesArray[i].likedUser === interMatchData[j].likedUser){
+                //res.send("Failed")
+                likeAlreadyMade = true;
+                console.log(likeAlreadyMade)
+                break
+            } 
+            if (likeAlreadyMade===false) {
+                likesArray.push(interMatchData)
+                fs.writeFileSync("likes.JSON", JSON.stringify(likesArray, null, 2));
+                console.log(interMatchData)
+            }
+        }
+    }
+    //fs.writeFileSync("likes.JSON", JSON.stringify(likesArray, null, 2));
+    res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + liked bruger til JSON', likesArray}));
+*/
+
+    //console.log(createdUser)
+    /*
+    for (let i = 0; i < createdUser.length; i++) {
+        if (loginData.username === createdUser[i].username && loginData.password === createdUser[i].password) {
+
+            return res.json(createdUser[i]);
+
+            //CurrentUser skal vise brugeroplysningerne på den bruger, som logger ind
+            //localStorage.setItem('currentUser', JSON.stringify(createdUser[i]));
+            //location.href = "userProfile.html";
+            
+            // hvis brugeroplysningerne er korrekte returneres at brugeren er inde
+            // return true;
+        }
+
+    }
+    res.json({err:"Failed"});
+*/
+})
+
+app.post('/interMatchDis', (req, res)=> {
+    let interMatchDataDis = req.body;
+    let disLikesArray = JSON.parse(fs.readFileSync("disLike.JSON"))
+    disLikesArray.push(interMatchDataDis)
+    fs.writeFileSync("disLike.JSON", JSON.stringify(disLikesArray, null, 2));
+    res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + disliked bruger til JSON', disLikesArray}));
+})
+
+app.get('/findMatch', (req, res)=> {
+    var allLikes = JSON.parse(fs.readFileSync("likes.JSON"))
+    res.json(allLikes)
+})
+
+
 app.listen(port, console.log(port));
+

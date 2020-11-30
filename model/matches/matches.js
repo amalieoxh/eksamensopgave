@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Her bliver de forskellige properties fra klassen udvalgt og kan displayes på siden 
             match.className = "match";
             
-            // displayer image 
+            // displayer navne på oprettede brugere i matches.html 
             match.innerHTML += '<div class="matchName" id='+allMatches[i].username+' onClick="interMatch('+allMatches[i].username+')">'+allMatches[i].username+'</div>';
             // displayer navnet på det eventuelle match 
          

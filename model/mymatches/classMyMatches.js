@@ -1,5 +1,3 @@
-
-
 class matchList {
     // constructor properties
     constructor() {

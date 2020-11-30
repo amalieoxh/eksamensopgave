@@ -196,7 +196,7 @@ function validateForm(event) {
     console.log(newUserAdd);
 
     // window.location: returns the href (URL) of the current page
-    //window.location = ("signIn.html");
+    window.location = ("signIn.html");
 
 }
 }

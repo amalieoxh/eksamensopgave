@@ -1,0 +1,18 @@
+[
+  {
+    "username": "Jens",
+    "likedUser": "Mathias"
+  },
+  {
+    "username": "Mathias",
+    "likedUser": "Jens"
+  },
+  {
+    "username": "Jens",
+    "likedUser": "brugernavn"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "Jens"
+  }
+]

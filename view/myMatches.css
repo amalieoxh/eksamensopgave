@@ -4,15 +4,6 @@ body {
 }
 
 
-.match-name-image {
-    display: inline-block;
-    float: left;
-    margin-left: 6%;
-    position: relative;
-
-}
-
-
 .container {
     max-width: 900px;
     margin: 0 auto;
@@ -166,4 +157,3 @@ nav{
     font-weight: bold;
     font-size: 14px;
 }
-
