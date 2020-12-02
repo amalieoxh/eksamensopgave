@@ -34,5 +34,14 @@
     "address": "Testvej 20",
     "email": "amalie.oxholm@gmail.com",
     "password": "1234"
+  },
+  {
+    "username": "",
+    "phone": "",
+    "city": "",
+    "zip": "",
+    "address": "",
+    "email": "",
+    "password": ""
   }
 ]
