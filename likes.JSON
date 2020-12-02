@@ -14,5 +14,17 @@
   {
     "username": "brugernavn",
     "likedUser": "Jens"
+  },
+  {
+    "username": "AmalieO",
+    "likedUser": "brugernavn"
+  },
+  {
+    "username": "AmalieO",
+    "likedUser": "Mathias"
+  },
+  {
+    "username": "Mathias",
+    "likedUser": "AmalieO"
   }
 ]
