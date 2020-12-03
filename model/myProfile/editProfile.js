@@ -15,6 +15,7 @@ document.getElementById("newPassword").value = currentUser.password;
 
 editUser = document.getElementById("editBtn")
 
+
 editUser.addEventListener('click', retriveAndSendUpdate);
 
 function retriveAndSendUpdate() {
@@ -46,6 +47,8 @@ function sendUpdate(data) {
   xhr.open("PUT", "http://localhost:2500/editProfile", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(data));
+  localStorage.setItem('currentUser', JSON.stringify(data));
+
 }
 
 function processResponse(e) {
@@ -55,7 +58,12 @@ function processResponse(e) {
       if (allUsers[i].username === username) {
         allUsers.splice(i, 1);
         console.log(allUsers)
+
       }
     }
   }
+  alert("Your user has been updated");
+  window.location.href = ("../view/userProfile.html")
+
 }
+

@@ -13,22 +13,7 @@ class User {
         this.address = address;
         this.email = email;
         this.gender = gender;
-        // this.id = id; Lav en funktion der genererer id til en bruger. 
     }
-}
-
-//brugerne hentes så der kan tilføjes brugere, hvorunder userlist automatisk vil tage informationen 
-if(localStorage.getItem("User") === null) {
-    var userList = [];
-    //new user pushes op i det tomme array
-    userList.push(new User("test 1", "123456", "42343212", "Copenhagen", "2200", "Bovej 2", "test1@mail.dk"))
-    userList.push(new User("test 2", "185026", "12141112", "Copenhagen", "2100", "Centrumsvej 5", "test2@mail.dk"))
-    userList.push(new User("test 3", "484429", "27834702", "Copenhagen", "2000", "Københavnsvej 10", "test3@mail.dk"))
-    userList.push(new User("test 4", "9344259", "17131712", "Copenhagen", "2400", "Tranevej 7", "test4@mail.dk"))
-//arrayet userList laves om til et string vha. json.stringify, dette gemmes i localstorage
-
-    var userListString = JSON.stringify(userList);
-    localStorage.setItem("User", userListString)
 }
 
 // herefter valideres samtlige felter ved oprettelse af en ny bruger 

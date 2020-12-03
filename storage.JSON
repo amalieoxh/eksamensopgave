@@ -18,17 +18,8 @@
     "password": "123"
   },
   {
-    "username": "Amalie",
-    "phone": "12345678",
-    "city": "Copenhagen",
-    "zip": "2200",
-    "address": "Vejnavn 10",
-    "email": "amalie@mail.dk",
-    "password": "hej"
-  },
-  {
     "username": "Amalieoxholm",
-    "phone": "999999999",
+    "phone": "11111115",
     "city": "Copenhagen",
     "zip": "2200",
     "address": "Testvej 20",
