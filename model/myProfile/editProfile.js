@@ -1,102 +1,60 @@
-const { each } = require("jquery");
-
-// Create an event listner for the submit button
-document.getElementById('editBtn').addEventListener('click',updateInfo);
-
-class updatedUser {
-    constructor(username, password, phone, city, zip, address, email){
-
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.city = city;
-        this.zip = zip;
-        this.address = address;
-        this.email = email;
-    }}
-
-    
-
-// Function that updates personal info
-function updateInfo(){
-
-
-    //get the value from HTML form 
-    username = document.getElementById("editUsername").value;
-    phone = document.getElementById("editPhone").value;
-    city = document.getElementById("newCity").value;
-    zip = document.getElementById("newZip").value;
-    adress = document.getElementById("newAddress").value;
-    email = document.getElementById("newEmail").value;
-    password = document.getElementById("newPassword").value;
-    
-    // Get the existing data
-    currentUser = JSON.parse(window.localStorage.getItem('currentUser'));
-    //get user data
-   
-
-
-    // Add new data to localStorage Array
-    currentUser["username"] = username;
-    currentUser["phone"] = phone;
-    currentUser["city"] = city;
-    currentUser["zip"] = zip;
-    currentUser["address"] = adress;
-    currentUser["email"] = email;
-    currentUser["password"] = password;
 
 
 
-// Save back to localStorage
-window.localStorage.setItem('currentUser', JSON.stringify(currentUser));
-//window.localStorage.setItem('User', JSON.stringify(changedUser));
-window.location = ("userProfile.html");
+//variabel for den bruger, som er logget ind 
+var currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    var updatesUser = JSON.parse(localStorage.getItem("User"));
+// henter information fra min User Klasse, som blev oprettet i validation.js - formålet er at man som bruger kan se sine brugeroplysninger
+document.getElementById("username").value = currentUser.username;
+document.getElementById("editPhone").value = currentUser.phone;
+document.getElementById("newCity").value = currentUser.city;
+document.getElementById("newZip").value = currentUser.zip;
+document.getElementById("newAddress").value = currentUser.address;
+document.getElementById("newEmail").value = currentUser.email;
 
-    //pusher ny bruger ind i et array 
+editUser = document.getElementById("editBtn")
 
+editUser.addEventListener('click', retriveAndSendUpdate);
 
-    var i;
-    for (i = 0; i < updatesUser.length; i++) {
-        email = updatesUser[i].email 
-        console.log(address);
-        if /* check om email er det samme så:*/
-             updatesUser[i] = new updatedUser (username, password, phone, city, zip, address, email)
+function retriveAndSendUpdate() {
+  const username = document.getElementById('username');
+  const phone = document.getElementById('editPhone');
+  const city = document.getElementById('newCity');
+  const zip = document.getElementById('newZip');
+  const address = document.getElementById('newAddress');
+  const email = document.getElementById('newEmail');
+  const password = document.getElementById('newPassword');
 
-    }
+  var data = {
+    username: username.value,
+    phone: phone.value,
+    city: city.value,
+    zip: zip.value,
+    address: address.value,
+    email: email.value,
+    password: password.value,
+  }
 
-    updatesUser.push(new updatedUser (username, password, phone, city, zip, address, email));
-    console.log(updatesUser);
-
-    //createduser laves til en string 
-    var updatesUser = JSON.stringify(createdUser);
-    //tilføjes til local storage
-    localStorage.setItem("User", updatesUser);
-    //tilføjer en alert 
-    alert('New User has been created');
-
-
+  sendUpdate(data);
 }
 
+function sendUpdate(data) {
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = "json"
+  xhr.addEventListener("readystatechange", processResponse);
+  xhr.open("PUT", "http://localhost:2500/editProfile", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.send(JSON.stringify(data));
+}
 
-
-
-
-//constructor(username, password, phone, city, zip, address, email, gender)
-
-/*
-//Herefter oprettes en variable for oprettede bruger, som sendes til localstorage
-    var updatesUser = JSON.parse(localStorage.getItem("User"));
-
-    //pusher ny bruger ind i et array 
-    updatesUser.push(new updatedUser (username, password, phone, city, zip, address, email));
-    console.log(updatesUser);
-
-    //createduser laves til en string 
-    var updatesUser = JSON.stringify(createdUser);
-    //tilføjes til local storage
-    localStorage.setItem("User", updatesUser);
-    //tilføjer en alert 
-    alert('New User has been created');
-*/
+function processResponse(e) {
+  if (e.readyState === 4) {
+    var allUsers = e.response;
+    for (i = 0; i < allUsers.length; i++) {
+      if (allUsers[i].username === username) {
+        allUsers.splice(i, 1);
+        console.log(allUsers)
+      }
+    }
+  }
+}

@@ -1,29 +1,38 @@
 [
   {
     "username": "brugernavn",
-    "phone": "60700512",
-    "city": "Greve",
-    "zip": "2670",
-    "address": "hej alle 123",
-    "email": "mafaber@hotmail.dk",
-    "password": "hej123hej"
-  },
-  {
-    "username": "Mathias",
-    "phone": "60700512",
-    "city": "Greve",
-    "zip": "2670",
-    "address": "Donnergaards alle 205",
-    "email": "mafaber@hotmail.dk",
-    "password": "123"
+    "phone": "12345678",
+    "city": "Birkeroed",
+    "zip": "3460",
+    "address": "vejnavn 12",
+    "email": "bruger@hotmail.dk",
+    "password": "hejsa123"
   },
   {
     "username": "Jens",
-    "phone": "60700512",
-    "city": "Greve",
-    "zip": "2670",
-    "address": "Donnergaards alle 205",
-    "email": "mafaber@hotmail.dk",
+    "phone": "12345678",
+    "city": "Virum",
+    "zip": "7890",
+    "address": "gadenavn 11",
+    "email": "jens@hotmail.dk",
+    "password": "123"
+  },
+  {
+    "username": "Amalie",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
+    "address": "Vejnavn 10",
+    "email": "amalie@mail.dk",
     "password": "hej"
+  },
+  {
+    "username": "AmalieO",
+    "phone": "12345678",
+    "city": "Copenhaen",
+    "zip": "2200",
+    "address": "Testvej 20",
+    "email": "amalie.oxholm@gmail.com",
+    "password": "1234"
   }
 ]

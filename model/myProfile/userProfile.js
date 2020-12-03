@@ -18,7 +18,7 @@ function logOut() {
     return localStorage.removeItem('currentUser'); 
 }
 
-
+/*
 var removeItem = document.getElementById("deleteBtn").addEventListener("click",deleteAccount);
 
 function deleteAccount() {
@@ -33,7 +33,7 @@ function deleteAccount() {
     return localStorage.removeItem('currentUser'); 
 
 }
-
+*/
 
 
 
