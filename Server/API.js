@@ -158,7 +158,24 @@ app.post('/deleteProfile', (req, res)=> {
 
 
 
+app.get('/editProfile', (req, res) => {
+    
+    var allUsers = JSON.parse(fs.readFileSync("storage.JSON"))
+    res.json(allUsers)
+})
 
+
+app.put('/editProfile', (req, res)=> {
+    let reqData = req.body;
+    console.log('Post request virker')
+    console.log(reqData) 
+    var storage = JSON.parse(fs.readFileSync("storage.JSON"))
+    storage.push(reqData);
+    fs.writeFileSync("storage.JSON", JSON.stringify(storage, null, 2));
+
+    //console.log(reqData);
+    res.send(JSON.stringify({message: 'the user is updates as', storage}));
+})
 
 
 app.listen(port, console.log(port));

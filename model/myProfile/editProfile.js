@@ -11,6 +11,7 @@ document.getElementById("newCity").value = currentUser.city;
 document.getElementById("newZip").value = currentUser.zip;
 document.getElementById("newAddress").value = currentUser.address;
 document.getElementById("newEmail").value = currentUser.email;
+document.getElementById("newPassword").value = currentUser.password;
 
 editUser = document.getElementById("editBtn")
 
