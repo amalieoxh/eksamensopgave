@@ -136,11 +136,49 @@ app.get('/findMatch', (req, res)=> {
 })
 
 
+app.delete('/deleteUser', (req, res)=> {
+    let removeThisPerson = req.body;
+    let userProfilesArray = JSON.parse(fs.readFileSync("storage.JSON"))
+    console.log(removeThisPerson, "hej") 
+    console.log(userProfilesArray, "nej")
+
+    for (i = 0; i < userProfilesArray.length; i++){
+        if (removeThisPerson.username === userProfilesArray[i].username){
+            console.log("hej")
+            userProfilesArray.splice(i,1);
+        }
+    }
+    fs.writeFileSync("likes.JSON", JSON.stringify(userProfilesArray, null, 2));
+    res.send(JSON.stringify({userProfilesArray}));
+})
+
+
+app.delete('/deleteMatch', (req, res)=> {
+    var allLikes = JSON.parse(fs.readFileSync("likes.JSON"))
+    res.json(allLikes)
+})
+
+
+app.post('/deleteMatch', (req, res)=> {
+    let reqData = req.body;
+    console.log('Post request is working')
+    console.log(reqData) 
+    var storage = JSON.parse(fs.readFileSync("storage.JSON"))
+    storage.push(reqData);
+    fs.writeFileSync("storage.JSON", JSON.stringify(storage, null, 2));
+
+    //console.log(reqData);
+    res.send(JSON.stringify({mesagge: 'This match has been deleted from', storage}));
+})
+
+
+
+
 
 app.delete('/deleteProfile', (req, res) => {
 
     var allUsers = JSON.parse(fs.readFileSync("storage.JSON"))
-    res.json(allUsers)
+    res.json(allUsers).send()
 
 })
 
@@ -155,7 +193,6 @@ app.post('/deleteProfile', (req, res)=> {
     //console.log(reqData);
     res.send(JSON.stringify({mesagge: 'This user has been delete from', storage}));
 })
-
 
 
 app.get('/editProfile', (req, res) => {

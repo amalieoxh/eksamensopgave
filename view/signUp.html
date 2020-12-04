@@ -43,6 +43,8 @@
     
         <div id="errorMessages">
             <div id="usernameErr" > </div>
+            <div id="ageErr" > </div>
+            <div id="descriptionErr" > </div>
             <div id="emailErr"></div>
             <div id="phoneErr"></div>
             <div id="cityErr"></div>
@@ -55,6 +57,19 @@
     
             <input type="text" id="username" value="" placeholder="Name">
             <br/>
+
+            <br>
+            <p>Age</p>
+    
+            <input type="text" id="age" maxlength="3" value="" placeholder="Age">
+            <br/>
+
+            <br>
+            <p>Description</p>
+    
+            <input type="text" id="description" maxlength="200" value="" placeholder="Description">
+            <br/>
+            
     
             <br/>
             <p>Phone</p>
@@ -133,7 +148,6 @@
     
     </body>
 
-    <script src="../controller/script.js"></script>
     <script src="../model/signUp_signIn/validation.js"></script>
 
     </html>

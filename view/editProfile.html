@@ -38,13 +38,39 @@
 <!-- bruger oplysninger -->
 <h1> Edit my Account </h1>
 
+
 <form name="editForm" method="post">
     <div id = "sign-up">
+<br>
+        <div id="errorMessages">
+            <div id="usernameErr" > </div>
+            <div id="ageErr" > </div>
+            <div id="descriptionErr" > </div>
+            <div id="emailErr"></div>
+            <div id="phoneErr"></div>
+            <div id="cityErr"></div>
+            <div id="zipErr"></div>
+            <div id="addressErr"></div>
+            <div id="passwordErr" ></div>
+        </div>
+        <br>
 
         <br>
         <p>Username</p>
 
         <input type="text" id="username" value="" readonly>
+        <br/>
+
+        <br/>
+        <p>Age</p>
+        <input type="text" id="newAge" value="">
+        <br/>
+        <br/>
+
+        <br/>
+        <p>Description</p>
+        <input type="text" id="newDescription" value="">
+        <br/>
         <br/>
 
         <br/>
@@ -88,6 +114,7 @@
     <button id="editBtn" type="button" class="registerbtn" > Submit </button>
     </div>
 <br>
+
 
    
 

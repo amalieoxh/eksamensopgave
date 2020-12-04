@@ -1,9 +1,12 @@
 
 //variabel for den bruger, som er logget ind 
 var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+var foundUser = JSON.parse(localStorage.getItem("foundUser"));
 
 // henter information fra min User Klasse, som blev oprettet i validation.js - formålet er at man som bruger kan se sine brugeroplysninger
 document.getElementById("username").value = currentUser.username;
+document.getElementById("age").value = currentUser.age;
+document.getElementById("description").value = currentUser.description;
 document.getElementById("phone").value = currentUser.phone;
 document.getElementById("city").value = currentUser.city;
 document.getElementById("zip").value = currentUser.zip;
@@ -12,28 +15,15 @@ document.getElementById("email").value = currentUser.email;
 
 
 
-var logOutBTN = document.getElementById("logOutBtn").addEventListener("click",logOut);
+var logOutBTN = document.getElementById("logOutBtn");
+//.addEventListener("click",logOut);
 
-function logOut() {
-    return localStorage.removeItem('currentUser'); 
-}
+logOutBTN.addEventListener("click", function() {
+    localStorage.removeItem('currentUser'); 
+    localStorage.removeItem('foundUser'); 
 
-/*
-var removeItem = document.getElementById("deleteBtn").addEventListener("click",deleteAccount);
-
-function deleteAccount() {
-    var accounts = JSON.parse(localStorage.getItem("User"));
-    var current = JSON.parse(localStorage.getItem("currentUser"));
-
-    accounts = accounts.filter(account => account.username !== current.username);
-    console.log(accounts);
-
-    localStorage.setItem("User", JSON.stringify(accounts));
-
-    return localStorage.removeItem('currentUser'); 
-
-}
-*/
+    window.location.replace("./signIn.html")
+})
 
 
 

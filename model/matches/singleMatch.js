@@ -1,5 +1,6 @@
-//URL SearchParams. Dette er den måde hvorpå når der trykkes på et billede i match oversigten bliver man sendt til det pågældende match siden
-//Vi bruger en indbygget klasse der hedder URLSearchParams, som giver muligheden for at hente query-parameteren 'matchId'.
+// benytter klassen fra likeClass.js
+//const Like = require('../classes/likeClass.js')
+
 
 'div class="singleMatchContainer">'
 //Fundamentet for at finde det rigtige mulige match, som der er klikket på. Her er der forekommet en refakturering. Således at den går fra at benytte matches[i]
@@ -20,6 +21,8 @@ container.innerHTML = '<img class="match_img"' + ' onClick ="interMatch"(' + mat
 */
 /* displayer matchnavnet */
 container.innerHTML += '<div class="matchName">' + match.username + '</div>';
+container.innerHTML += '<div class="matchAge">' + 'Age:' +match.age + '</div>';
+container.innerHTML += '<div class="matchDescription">' + match.description + '</div>';
 // ligesom linjen herover, skal man kunne se alle oplysninger om brugeren.
 
 /*displayer beskrivelsen*/

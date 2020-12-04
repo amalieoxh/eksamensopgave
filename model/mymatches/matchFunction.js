@@ -1,3 +1,7 @@
+
+
+
+
 // Vi laver et post request der ligner likesarrayet meget! 
 // Inde i API skal vi så loope igennem likesarrayet, og finde matches. 
 // dvs. if (likesarray[i].username == likesarray[j].likedPerson && likesarray[j].username == likesarray[i].likedPerson)

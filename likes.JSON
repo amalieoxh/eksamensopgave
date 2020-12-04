@@ -22,5 +22,24 @@
   {
     "username": "brugernavn",
     "likedUser": "Amalieoxholm"
+  },
+  {
+    "username": "amalieida",
+    "likedUser": "brugernavn"
+  }
+  ,
+  {
+    "username": "brugernavn",
+    "likedUser": "amalieida"
+  }
+  ,
+  {
+    "username": "amalieoxh",
+    "likedUser": "brugernavn"
+  }
+  ,
+  {
+    "username": "brugernavn",
+    "likedUser": "amalieoxh"
   }
 ]

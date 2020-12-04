@@ -1,6 +1,8 @@
 [
   {
     "username": "brugernavn",
+    "age": "27",
+    "description": "Mit navn er brugernavn, da jeg godt kan lide at være anonym. Skriv til mig, så kan jeg fortæle mere om mig selv",
     "phone": "12345678",
     "city": "Birkeroed",
     "zip": "3460",
@@ -10,6 +12,8 @@
   },
   {
     "username": "Jens",
+    "age": "22",
+    "description": "Dreng på 22 som elsker øl og arbejder som revisor",
     "phone": "12345678",
     "city": "Virum",
     "zip": "7890",
@@ -19,11 +23,46 @@
   },
   {
     "username": "Amalieoxholm",
-    "phone": "11111115",
+    "age": "22",
+    "description": "Pige på 22 som spiller fodbold i om lørdagen",
+    "phone": "87654321",
     "city": "Copenhagen",
     "zip": "2200",
     "address": "Testvej 20",
     "email": "amalie.oxholm@gmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "Amaliehej",
+    "age": "34",
+    "description": "Pige på 24 som spiller skak i om søndagen",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
+    "address": "hejvej 20",
+    "email": "amalie.oxholm@gmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "amalieida",
+    "age": "22",
+    "description": "Pige på 25 som spiller volley i om lørdagen",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
+    "address": "Testvej 20",
+    "email": "amalie.oxholm@gmail.com",
+    "password": "1234"
+  },
+  {
+    "username": "amalieoxh",
+    "age": "26",
+    "description": "Pige på 23 som spiller volley i om lørdagen",
+    "phone": "87654321",
+    "city": "Copenhaen",
+    "zip": "1111",
+    "address": "Testvej 20",
+    "email": "amox20ab@student.cbs.dk",
     "password": "1234"
   }
 ]
