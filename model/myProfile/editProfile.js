@@ -161,11 +161,41 @@ function validateFormEdit(event) {
       "Password" ; 
   
 
-  retriveAndSendUpdate()
+      updateFunction()
  
 }
 
+currentUser = localStorage.getItem('currentUser');
+var usernameCurent = currentUser.username;
 
+function updateFunction() {
+  let updateData = {
+      username : username.value,
+      age: age.value,
+      description: description.value,
+      email: email.value,
+      phone: phone.value,
+      city: city.value,
+      zip: zip.value,
+      address: address.value,
+      password : password.value, 
+  }
+
+  
+  axios.patch("http://localhost:2500/editProfile/" +usernameCurent, updateData)
+              .then(function(response){
+              console.log(response);
+
+              } 
+
+          .then(() => window.location = "../view/userProfile.html"));          
+}
+
+
+
+
+
+/*
 
 //henter dataen fra HTML 
 function retriveAndSendUpdate() {
@@ -227,4 +257,6 @@ function processResponse() {
   window.location.href = ("../view/userProfile.html")
 
 }
+
+*/
 }

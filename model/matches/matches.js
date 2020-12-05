@@ -48,13 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
    
 })
 
-function findMatch(username) {
-   
-   
-   
-   
-}
-
 async function interMatch(username){
    const xhr = new XMLHttpRequest();
    xhr.responseType = "json"

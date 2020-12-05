@@ -38,60 +38,56 @@ function validateForm(event) {
     var emailErr = true;
 
 // validere userName
-    if (username ==""){
-        printError("usernameErr", "Type in a username");
-    }
+if (username ==""){
+    printError("usernameErr", "Type in a username");
+}
 //klargøre hvilke tegn username må indeholde --> disse tegn er fundet på stack Overflow
 //https://stackoverflow.com/questions/9628879/javascript-regex-username-validation
-        else {
-            var regex = /^[a-zA-Z\s]+$/;
+else {
+    var regex = /^[a-zA-Z\s]+$/;
+
 //hvilke situationer der skal printes en errormessage defineres
-            if (regex.test(username) === false){
-                printError("usernameErr", "Please enter a username using the standard alphabet");
-            }else {
-                printError("usernameErr", "");
-                usernameErr = false;
-            }
-        }
-        // validere age
+    if (regex.test(username) === false){
+        printError("usernameErr", "Please enter a username using the standard alphabet");
+    }
+    
+    if(regex.test(username) == true){
+    
+            const xhr = new XMLHttpRequest();
+            xhr.responseType = "json"    
+        
+            // "Åbner" vores http request og angiver at det er POST request fra serveren på localhost:3000
+            xhr.open("post", "http://localhost:2500/ifExisting");
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.send(JSON.stringify({username}));
+
+            xhr.addEventListener("readystatechange", function() {
+                if(this.readyState === 4) {
+                    const res = this.response 
+                    if (res.message === "Failed"){
+                        printError("usernameErr", "username taken");
+                    }
+                    //
+                    console.log('hek')
+                           // validere age
     if (age ==""){
         printError("ageErr", "please enter your age");
     }
 
-        else {
-            var regexAge = /^[0-9]{3}$/;
-//hvilke situationer der skal printes en errormessage defineres
-            if (regexAge.test(age) === false){
-                printError("ageErr", "Please enter your age, only using numbers");
-            }else {
-                printError("ageErr", "");
-                ageErr = false;
-            }
-        }
         //validere description
         if (description ==""){
             printError("descriptionErr", "please write a description");
         }
-    
-            else {
-                var regexDescription = /^[a-zA-Z0-9\s,.'-]{3,}$/;
-    //hvilke situationer der skal printes en errormessage defineres
-                if (regexDescription.test(description) === false){
-                    printError("descriptionErr", "Please enter a description so possible partners can get to know you");
-                }else {
-                    printError("descriptionErr", "");
-                    descriptionErr = false;
-                }
-            }
+
 
 // email valideres
-    if (email =="") {
+    if (email =="") {
         printError("emailErr", "please enter an email")
     }
 //definere hvilke tegn email må indeholde
     else{
         var regexMail = /^\S+@\S+\.\S+$/;
-        if (regexMail.test(email) === false) {
+        if (regexMail.test(email) === false) {
             printError("emailErr", "Please enter a valid email")
         }else {
             printError("emailErr", "");
@@ -192,11 +188,9 @@ function validateForm(event) {
 //Herefter oprettes en variable for oprettede bruger, som sendes til localstorage
     var createdUser = JSON.parse(localStorage.getItem("User"));
     console.log(createdUser);
-
     //pusher ny bruger ind i et array 
     createdUser.push(new User (username, password, phone, city, zip, address, email));
     console.log(createdUser);
-
     //createduser laves til en string 
     var newUserAdd = JSON.stringify(createdUser);
     //tilføjes til local storage
@@ -207,11 +201,18 @@ function validateForm(event) {
     console.log(newUserAdd);
 */
 
-    sendDataToJSON()
-    // window.location: returns the href (URL) of the current page
-    window.location = ("signIn.html");
+   
 
 }
+                    
+}
+})    
+sendDataToJSON()
+// window.location: returns the href (URL) of the current page
+window.location = ("signIn.html");
+        
+ }}
+ 
 
 
 

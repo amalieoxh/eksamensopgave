@@ -8,38 +8,27 @@
     "likedUser": "Jens"
   },
   {
-    "username": "Jens",
-    "likedUser": "brugernavn"
-  },
-  {
     "username": "brugernavn",
     "likedUser": "Jens"
-  },
-  {
-    "username": "Amalieoxholm",
-    "likedUser": "brugernavn"
   },
   {
     "username": "brugernavn",
     "likedUser": "Amalieoxholm"
   },
   {
-    "username": "amalieida",
-    "likedUser": "brugernavn"
-  }
-  ,
-  {
     "username": "brugernavn",
     "likedUser": "amalieida"
-  }
-  ,
-  {
-    "username": "amalieoxh",
-    "likedUser": "brugernavn"
-  }
-  ,
+  },
   {
     "username": "brugernavn",
+    "likedUser": "amalieoxh"
+  },
+  {
+    "username": "amalieoxh",
+    "likedUser": "Jens"
+  },
+  {
+    "username": "Jens",
     "likedUser": "amalieoxh"
   }
 ]

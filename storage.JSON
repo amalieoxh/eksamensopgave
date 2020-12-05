@@ -56,13 +56,13 @@
   },
   {
     "username": "amalieoxh",
-    "age": "26",
-    "description": "Pige på 23 som spiller volley i om lørdagen",
-    "phone": "87654321",
-    "city": "Copenhaen",
-    "zip": "1111",
+    "age": "22",
+    "description": "Pige på 25 som spiller volley i om lørdagen",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
     "address": "Testvej 20",
-    "email": "amox20ab@student.cbs.dk",
+    "email": "amalie.oxholm@gmail.com",
     "password": "1234"
   }
 ]
