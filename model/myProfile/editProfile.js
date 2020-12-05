@@ -165,33 +165,38 @@ function validateFormEdit(event) {
  
 }
 
-currentUser = localStorage.getItem('currentUser');
-var usernameCurent = currentUser.username;
 
-function updateFunction() {
+async function updateFunction() {
+var username = document.getElementById("username").value;
+var age = document.getElementById("newAge").value;
+var description = document.getElementById("newDescription").value;
+var password = document.getElementById("newPassword").value;
+var phone = document.getElementById("editPhone").value;
+var city = document.getElementById("newCity").value;
+var zip = document.getElementById("newZip").value;
+var address = document.getElementById("newAddress").value;
+var email = document.getElementById("newEmail").value;
+
   let updateData = {
-      username : username.value,
-      age: age.value,
-      description: description.value,
-      email: email.value,
-      phone: phone.value,
-      city: city.value,
-      zip: zip.value,
-      address: address.value,
-      password : password.value, 
+      username : username,
+      age: age,
+      description: description,
+      email: email,
+      phone: phone,
+      city: city,
+      zip: zip,
+      address: address,
+      password : password, 
   }
 
-  
-  axios.patch("http://localhost:2500/editProfile/" +usernameCurent, updateData)
+
+  axios.put("http://localhost:2500/editProfile/" + username, updateData)
               .then(function(response){
               console.log(response);
+          } 
+                //.then(() => window.location = "../view/userProfile.html"));}
 
-              } 
-
-          .then(() => window.location = "../view/userProfile.html"));          
-}
-
-
+                )}}
 
 
 
@@ -259,4 +264,4 @@ function processResponse() {
 }
 
 */
-}
+              

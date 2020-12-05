@@ -192,19 +192,27 @@ app.post('/editProfile', (req, res) => {
 })
 */
 
-app.patch('/editProfile/:username', (req, res) => {
-    fs.readFile(dataPath, "utf8", (err, data) => {
+var dataPath = __dirname
+app.put('/editProfile/:username', (req, res) => {
+    data = fs.readFileSync("storage.JSON", "utf8") 
         let parsedData = JSON.parse(data)
         const username = req.params["username"];
-        console.log(data)
-        parsedData[username] = req.body;
-        fs.writeFile(dataPath, JSON.stringify(parsedData), () => {
-            res.status(200).send('${username} updated');
-        })
-    })
-})
+        let needupdate = parsedData.findIndex(element => {
+            return element.username == username})
+    
+        // this will use the current user, and only update those fields 
+        // which are sent in the request body. If only one field is sent, 
+        // only that field will be updated.
+  
+        const updatedUser = {...parsedData[needupdate], ...req.body}         
+       
+        // sætter så parsedData til den opdaterede user
+        parsedData[needupdate] = updatedUser 
+    
 
-app.listen(port, console.log(port));
+        fs.writeFileSync("storage.JSON", JSON.stringify(parsedData, null, 2))
+        res.status(200).json({msg: "succes"})
+})
 
 
 app.delete('/deleteMatch', (req, res)=> {
@@ -216,3 +224,7 @@ app.delete('/deleteMatch', (req, res)=> {
     fs.writeFileSync("likes.JSON", JSON.stringify(newLikes, null, 2));
     res.send(JSON.stringify({besked: 'Vi sender det nye likes array tilbage', newLikes}));
     })
+
+
+
+    app.listen(port, console.log(port));
