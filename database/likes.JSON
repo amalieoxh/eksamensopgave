@@ -1,0 +1,38 @@
+[
+  {
+    "username": "Jens",
+    "likedUser": "Amalie"
+  },
+  {
+    "username": "Amalie",
+    "likedUser": "Jens"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "Jens"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "Amalieoxholm"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "amalieida"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "amalieoxh"
+  },
+  {
+    "username": "amalieoxh",
+    "likedUser": "Jens"
+  },
+  {
+    "username": "Jens",
+    "likedUser": "amalieoxh"
+  },
+  {
+    "username": "brugernavn",
+    "likedUser": "testet"
+  }
+]

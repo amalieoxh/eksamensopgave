@@ -4,7 +4,7 @@
   "main": "API.js",
   "scripts": {
     "test": "mocha",
-    "start": "Server/API.js"
+    "start": "backend/Server/API.js"
   },
   "author": "",
   "license": "ISC",
