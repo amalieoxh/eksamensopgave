@@ -1,4 +1,3 @@
-
 //benytter inline HTML 
 'div class="singleMatchContainer">'
 

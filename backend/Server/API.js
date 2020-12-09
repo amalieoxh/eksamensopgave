@@ -20,8 +20,8 @@ app.use((req, res, next) => {
 //request til signUp
 app.get('/', (req, res)=> {
     let data = 'Get request virker'
-    let dataAsString = JSON.stringify(data);
-    res.send(dataAsString);
+    let dataStringified = JSON.stringify(data);
+    res.send(dataStringified);
 })
 
 // Ved at sætte noget ind i input feltet på html siden, og trykke submit, gemmes dataen i en JSON fil. 
@@ -89,8 +89,8 @@ app.post('/signIn', (req, res)=> {
 
 //request til at displaye mulige matches 
 app.get('/matches', (req, res)=> {
-    var allMatches = JSON.parse(fs.readFileSync("./database/storage.JSON"))
-    res.json(allMatches)
+    var allPotentialMatches = JSON.parse(fs.readFileSync("./database/storage.JSON"))
+    res.json(allPotentialMatches)
 })
 
 //disse intermatch requests henvender sig til filen interLike.js, hvori en brugers fulde profil vises og man kan like eller dislike
@@ -103,6 +103,7 @@ app.post('/interMatch', (req, res)=> {
     fs.writeFileSync("./database/likes.JSON", JSON.stringify(likesArray, null, 2));
     res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + liked bruger til JSON', likesArray}));
 })
+
 
 app.post('/interMatchDis', (req, res)=> {
     let interMatchDataDis = req.body;
