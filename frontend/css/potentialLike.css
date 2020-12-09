@@ -67,22 +67,13 @@ h4 {
 .match{
     display: inline-block;
     width: 40%;
-    height: 420px;
+    height: 50px;
     margin-left: 5%;
     border: 0.5px solid grey;
     text-align: center;
-    margin-bottom: 10%
+    margin-bottom: 5%
 
  }
-.match_img {
-    width: 50%;
-    display: inline-block;
-    padding: 8%;
-    margin-left: 6%;
-    position: relative;
-    cursor: pointer;
-
-}
 
 
 /* CSS til øvre navigationsmenu */

@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 })
 
 
+//request til signUp
 app.get('/', (req, res)=> {
     let data = 'Get request virker'
     let dataAsString = JSON.stringify(data);
@@ -36,8 +37,26 @@ app.post('/', (req, res)=> {
     res.send(JSON.stringify({besked: 'Her oprettes en bruger, her er hans oplysninger:', storage}));
 })
 
+//dette request tjekker om brugernavnet allerede er taget 
+app.post('/ifExisting', (req, res)=> {
+    let validationData = req.body;
+    var createdUser = JSON.parse(fs.readFileSync("./database/storage.JSON"))
+
+    
+    //check for om username er brugt i forvejen
+    for (let i = 0; i < createdUser.length; i++) {
+        console.log(req.body)
+        if (validationData.username === createdUser[i].username) {
+            return res.status(500).json({message:"Failed"});
+        }}
+
+        res.json({message:"bruger oprettes"})
+        //her kommer alt bruger-oprettelses-logik
+})
 
 
+
+//request til signIn 
 app.get('/signIn', (req, res)=> {
     let data = 'Get request signin virker'
     let dataAsString = JSON.stringify(data);
@@ -68,12 +87,14 @@ app.post('/signIn', (req, res)=> {
 })
 
 
+//request til at displaye mulige matches 
 app.get('/matches', (req, res)=> {
     var allMatches = JSON.parse(fs.readFileSync("./database/storage.JSON"))
     res.json(allMatches)
 })
 
-// like knap: tag data fra localstorage (founduser), og send dette til en likes.json fil. 
+//disse intermatch requests henvender sig til filen interLike.js, hvori en brugers fulde profil vises og man kan like eller dislike
+// like knap: tag data fra sessionStorage (founduser), og send dette til en likes.json fil. 
 app.post('/interMatch', (req, res)=> {
     let interMatchData = req.body;
     let likesArray = JSON.parse(fs.readFileSync("./database/likes.JSON"))
@@ -96,78 +117,17 @@ app.get('/findMatch', (req, res)=> {
     res.json(allLikes)
 })
 
-/*
-app.delete('/deleteUser', (req, res)=> {
-    
-    let userArray = JSON.parse(fs.readFileSync("storage.JSON"))
-    let newUsers = userArray.filter(user=> user.username !== req.body.username);
-    fs.writeFileSync("storage.JSON", JSON.stringify(newUsers, null, 2));
-    res.send(JSON.stringify({besked: 'Vi sender det nye userarray tilbage', newUsers}));
-
-})
-*/
+//henter alle brugerne 
 app.get('/allusers', (req, res)=> {
     var allUsers = JSON.parse(fs.readFileSync("./database/storage.JSON"))
     res.json(allUsers)
 })
 
 
-/*
-app.delete('/deleteMatch', (req, res)=> {
-    var allLikes = JSON.parse(fs.readFileSync("likes.JSON"))
-    res.json(allLikes)
-})
-
-
-app.delete('/deleteMatch', (req, res)=> {
-    let reqData = req.body;
-    console.log('Post request is working')
-    console.log(reqData)
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"))   
-    var storage = JSON.parse(fs.readFileSync("likes.JSON"))
-             
-
-
-    for (let i = 0; i < storage.length; i++) {
-        console.log(req.body)
-        if (currentUser.username = storage[i].username && reqData.username === storage[i].likedUser) {
-            storage.splice(i,1);
-            return storage;
-        }}
-
-    //I får username på brugeren i matched i req.body
-    //I får brugeren der er logget ind, i localstorage
-    //i skal loope igennem alle matches, og finde der hvor brugeren der er logget ind har matchet med req.body
-
-    storage.push(reqData);
-    fs.writeFileSync("likes.JSON", JSON.stringify(storage, null, 2));
-
-    //console.log(reqData);
-    res.send(JSON.stringify({mesagge: 'This match has been deleted from', storage}));
-})
-
-*/
-
-app.post('/ifExisting', (req, res)=> {
-    let validationData = req.body;
-    var createdUser = JSON.parse(fs.readFileSync("./database/storage.JSON"))
-
-    
-    //check for om username er brugt i forvejen
-    for (let i = 0; i < createdUser.length; i++) {
-        console.log(req.body)
-        if (validationData.username === createdUser[i].username) {
-            return res.status(500).json({message:"Failed"});
-        }}
-
-        res.json({message:"bruger oprettes"})
-        //her kommer alt bruger-oprettelses-logik
-})
-
-
 
 //herefter benuyttes axious i de efterfølgende requests 
 
+//request til at slette en bruger
 app.delete('/deleteUser', (req, res)=> {
     
     let userArray = JSON.parse(fs.readFileSync("./database/storage.JSON"))
@@ -176,23 +136,8 @@ app.delete('/deleteUser', (req, res)=> {
     res.send(JSON.stringify({besked: 'Vi sender det nye userarray tilbage', newUsers}));
 
 })
-/*
 
-app.post('/editProfile', (req, res) => {
-    
-    let userArray = JSON.parse(fs.readFileSync("storage.JSON"))
-    console.log('Post request virker')
-    console.log(reqData) 
-    var storage = JSON.parse(fs.readFileSync("storage.JSON"))
-    storage.push(reqData);
-    fs.writeFileSync("storage.JSON", JSON.stringify(storage, null, 2));
-
-    //console.log(reqData);
-    res.send(JSON.stringify({message: 'the user is updates as', storage}));
-})
-*/
-/*
-//var dataPath = __dirname
+// request til at updatere sin profil 
 app.put('/editProfile/:username', (req, res) => {
     data = fs.readFileSync("./database/storage.JSON", "utf8") 
         let parsedData = JSON.parse(data)
@@ -213,30 +158,9 @@ app.put('/editProfile/:username', (req, res) => {
         fs.writeFileSync("./database/storage.JSON", JSON.stringify(parsedData, null, 2))
         res.status(200).json({msg: "succes"})
 })
-*/
-var dataPath = __dirname
-app.put('/editProfile/:username', (req, res) => {
-    data = fs.readFileSync("./database/storage.JSON", "utf8") 
-        let parsedData = JSON.parse(data)
-        const username = req.params["username"];
-        let needupdate = parsedData.findIndex(element => {
-            return element.username == username})
-    
-        // this will use the current user, and only update those fields 
-        // which are sent in the request body. If only one field is sent, 
-        // only that field will be updated.
-  
-        const updatedUser = {...parsedData[needupdate], ...req.body}         
-       
-        // sætter så parsedData til den opdaterede user
-        parsedData[needupdate] = updatedUser 
-    
-
-        fs.writeFileSync("./database/storage.JSON", JSON.stringify(parsedData, null, 2))
-        res.status(200).json({msg: "succes"})
-})
 
 
+//request til at slette et match 
 app.delete('/deleteMatch', (req, res)=> {
     var allLikes = JSON.parse(fs.readFileSync("./database/likes.JSON"))
     var CurrentUser = req.body[0];
@@ -247,6 +171,6 @@ app.delete('/deleteMatch', (req, res)=> {
     res.send(JSON.stringify({besked: 'Vi sender det nye likes array tilbage', newLikes}));
     })
 
-
-
     app.listen(port, console.log(port));
+
+    module.exports = app; //for testing

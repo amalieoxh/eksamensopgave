@@ -18,20 +18,21 @@
         
             xhr.addEventListener("readystatechange", function() {
                 if(this.readyState === 4) {
-                    const respo = this.response 
-                    console.log(respo)
+                    const response = this.response 
+                    console.log(response)
                     //henviser til fejlbeskeden fra API'et, hvor valideringen af brugeren ift. databasen foretages
-                    if (respo.err !== 'Failed'){
-                        // alert success
+                    if (response.err !== 'Failed'){
 
                         //gemmer den bruger der er logget ind i currentUser, herved kan computeren huske brugeren
-                        localStorage.setItem('currentUser', JSON.stringify(respo));
+                        localStorage.setItem('currentUser', JSON.stringify(response));
         
                         //sender brugeren videre til sin profil side
                         window.location.href = ("userProfile.html")
                         
+                    } else {
+                        alert("Login information not correct")
                     }
-                    console.log(respo); //tjekker at response kommer tilbage 
+                    console.log(response); //tjekker at response kommer tilbage 
                 }
 
              })

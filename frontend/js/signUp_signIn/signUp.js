@@ -1,5 +1,17 @@
 
 
+class User {
+    constructor(username, password, phone, city, zip, address, email, gender){
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.city = city;
+        this.zip = zip;
+        this.address = address;
+        this.email = email;
+        this.gender = gender;
+    }
+}
 
 // herefter valideres samtlige felter ved oprettelse af en ny bruger 
 
@@ -163,7 +175,7 @@ else {
     }
 
 //herefter sørges der for at, hvis nogle af oplysningerne er forkerte, skal storeDetails funktionen ikke køre.
-    if ((usernameErr || phoneErr || cityErr || zipErr || addressErr || emailErr || passwordErr) == true){
+    if ((usernameErr || ageErr || descriptionErr || phoneErr || cityErr || zipErr || addressErr || emailErr || passwordErr) == true){
         return false;
     } else {
     // laver en ny string, som viser hvad der er blevet indtastet 

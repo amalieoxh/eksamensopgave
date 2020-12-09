@@ -4,7 +4,8 @@
 
 //henter det array i localstorage som blev oprettet i potentialLikes.js
 //Dette item definere, hvem der er blevet trykket på og herved hvilken profil der skal vises 
-var match = JSON.parse(localStorage.getItem('founduser'));
+
+var potentialMatch = JSON.parse(sessionStorage.getItem('founduser'));
 
 //variabel som indhenter matchContainer i HTMLfilen 
 var matchContainer = document.getElementById('match');
@@ -16,11 +17,13 @@ container.className = "container";
 
 
 // displayer matchnavnet 
-container.innerHTML += '<div class="matchName">' + match.username + '</div>';
-// displayer mathalderen
-container.innerHTML += '<div class="matchAge">' + 'Age:' +match.age + '</div>';
+container.innerHTML += '<div class="matchName">' + potentialMatch.username + '</div>';
+// displayer math alderen
+container.innerHTML += '<div class="matchAge">' + 'Age: ' + potentialMatch.age + '</div>';
+//displayer byen det potentialle match bor i 
+container.innerHTML += '<div class="matchAge">' + 'City: ' + potentialMatch.city + '</div>';
 // displayer matchbeskrivelsen 
-container.innerHTML += '<div class="matchDescription">' + match.description + '</div>';
+container.innerHTML += '<div class="matchDescription">' + potentialMatch.description + '</div>';
 // ligesom linjen herover, skal man kunne se alle oplysninger om brugeren, som er relevant for et match.
 
 
@@ -39,7 +42,7 @@ function addToLike() {
     console.log("hej")
 
    //henter den bruger der er logget ind og den bruger, der bliver liket 
-   let foundUser = JSON.parse(localStorage.getItem("founduser"))
+   let foundUser = JSON.parse(sessionStorage.getItem("founduser"))
    console.log(foundUser)
    let currentUser = JSON.parse(localStorage.getItem("currentUser"))
    console.log(currentUser)
@@ -59,6 +62,7 @@ function addToLike() {
         if (respo.err == 'Failed'){
             
         }
+        window.location.replace("./potentialLike.html")
     }
     });
 
@@ -84,7 +88,7 @@ function addDislikes() {
     xhr.responseType = "json"
 
     //Definere den bruger der likes (foundUser) og den bruger der foretager liket (currentUser)
-    let foundUser = JSON.parse(localStorage.getItem("founduser"))
+    let foundUser = JSON.parse(sessionStorage.getItem("founduser"))
     console.log(foundUser)
     let currentUser = JSON.parse(localStorage.getItem("currentUser"))
     console.log(currentUser)
@@ -100,9 +104,11 @@ function addDislikes() {
         const respo = this.response 
         console.log(respo); //Til at se, om request kommer tilbage
         if (respo.err == 'Failed'){
-            
+
         }
-    
+        window.location.replace("./potentialLike.html")
+
+
     }
     });
 

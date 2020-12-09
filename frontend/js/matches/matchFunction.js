@@ -35,16 +35,19 @@ document.addEventListener("DOMContentLoaded", function() {
                         && 
                         findingMatches[i].likedUser === findingMatches[j].username ){
                         console.log(findingMatches[i].likedUser)  
+
+                        alert ("You've found a match!")  
+
                         
                         //herefter laves der inline HTML i JS, for at gøre det dynamisk ift. det skiftende antal af matches 
                         var matchRow = document.createElement('div');
                         matchRow.classList.add('match-row'); //vi bruger CSS stilen 'match-row'for div elementet matchRow
                         //vi vil senere tilføje en række til  div sektionen 'match-items' hvor de valgte personer listes 
                         var matchItems = document.getElementsByClassName('match-items')[0]; 
-                    
                         //Generer html-indholdet til en linje med det valgte match, (Web Dev Simplified - youtube, 2018)
                         //viser brugernavnet på den matchede bruger 
                         // laver en knap til at fjerne matchet fra matchlisten
+
                         let matchRowContents = `   
                             <div class="match-items match-column">
                                 <span class="match-name">${findingMatches[i].likedUser}</span>
@@ -60,9 +63,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         //De næste to linjer Sørger for at henholdsvis removeMatch funktion kaldes når der trykkes på knappen
                         matchRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeMatchHTML);
                     }
+
                 } 
+
             }
-            alert ("You've found a match!")  
           
         }
     }

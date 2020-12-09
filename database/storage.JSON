@@ -67,7 +67,7 @@
   },
   {
     "username": "LarsMikkelsen",
-    "age": "45",
+    "age": "49",
     "description": "Jeg er skuespiller, det er min bror også. Måske du har set mig i en fil ",
     "phone": "12345678",
     "city": "Copenhagen",
@@ -78,13 +78,35 @@
   },
   {
     "username": "testet",
-    "age": "45",
+    "age": "22",
     "description": "Jeg er skuespiller, det er min bror også. Måske du har set mig i en fil ",
     "phone": "87654321",
     "city": "Copenhagen",
     "zip": "2200",
     "address": "Testvej 20",
     "email": "test@test.com",
+    "password": "1234"
+  },
+  {
+    "username": "Regitzepigen",
+    "age": "25",
+    "description": "Forfængelig blond pige med interesse for pole dance ",
+    "phone": "46312433",
+    "city": "Amager ",
+    "zip": "2600",
+    "address": "amagerbrogade 22",
+    "email": "regitzepigen@pole.com",
+    "password": "2good2pole"
+  },
+  {
+    "username": "Ib",
+    "age": "34",
+    "description": "Jeg ser meget formel 1 og arbejder som læge",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
+    "address": "Testvej 20",
+    "email": "amalie.oxholm@gmail.com",
     "password": "1234"
   }
 ]

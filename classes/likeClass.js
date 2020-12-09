@@ -1,4 +1,7 @@
 
+const express = require('express');
+const router = express.Router();
+
 
 class Like {
     constructor(username, likedUser){

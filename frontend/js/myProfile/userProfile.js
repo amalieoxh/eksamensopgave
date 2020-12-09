@@ -21,7 +21,7 @@ var logOutBTN = document.getElementById("logOutBtn");
 logOutBTN.addEventListener("click", function() {
     //sletter data fra localStorage 
     localStorage.removeItem('currentUser'); 
-    localStorage.removeItem('foundUser'); 
+    sessionStorage.removeItem('foundUser'); 
 
     //sender brugeren til siden, hvor vedkommende kan logge ind 
     window.location.replace("./signIn.html")

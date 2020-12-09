@@ -160,12 +160,15 @@ function validateFormEdit(event) {
       "Password" ; 
   
 
-      updateFunction()
+      updateUser()
+
+
+      alert("You have now updated your user")
  
 }
 
 
-async function updateFunction() {
+async function updateUser() {
 var username = document.getElementById("username").value;
 var age = document.getElementById("newAge").value;
 var description = document.getElementById("newDescription").value;
@@ -193,6 +196,6 @@ var email = document.getElementById("newEmail").value;
               .then(function(response){
               console.log(response);
           } 
-                //.then(() => window.location = "../view/userProfile.html"));}
+                .then(() => window.location = "../view/userProfile.html")
 
                 )}}

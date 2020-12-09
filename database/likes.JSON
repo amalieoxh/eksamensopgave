@@ -32,7 +32,19 @@
     "likedUser": "amalieoxh"
   },
   {
-    "username": "brugernavn",
-    "likedUser": "testet"
+    "username": "testet",
+    "likedUser": "Amalieoxholm"
+  },
+  {
+    "username": "testet",
+    "likedUser": "LarsMikkelsen"
+  },
+  {
+    "username": "Regitzepigen",
+    "likedUser": "LarsMikkelsen"
+  },
+  {
+    "username": "LarsMikkelsen",
+    "likedUser": "Regitzepigen"
   }
 ]
