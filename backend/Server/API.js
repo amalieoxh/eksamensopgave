@@ -99,7 +99,7 @@ app.post('/interMatch', (req, res)=> {
     let interMatchData = req.body;
     let likesArray = JSON.parse(fs.readFileSync("./database/likes.JSON"))
     likesArray.push(interMatchData)
-    console.log(likesArray, "hej")
+    console.log(likesArray)
     fs.writeFileSync("./database/likes.JSON", JSON.stringify(likesArray, null, 2));
     res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + liked bruger til JSON', likesArray}));
 })
@@ -109,6 +109,7 @@ app.post('/interMatchDis', (req, res)=> {
     let interMatchDataDis = req.body;
     let disLikesArray = JSON.parse(fs.readFileSync("./database/disLike.JSON"))
     disLikesArray.push(interMatchDataDis)
+    console.log(disLikesArray)
     fs.writeFileSync("./database/disLike.JSON", JSON.stringify(disLikesArray, null, 2));
     res.send(JSON.stringify({besked: 'Vi sender vores egen bruger + disliked bruger til JSON', disLikesArray}));
 })

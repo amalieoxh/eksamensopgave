@@ -11,13 +11,31 @@ chai.use(chaiHTTP);
 
 describe('API', function (){
     it('It should post a new like', (done) => {
-        const user = {
+        let like = {
             username: "Erik",
             likedUser: "Ida",
         }
         chai.request(server)
         .post('/interMatch')
-        .send(user)
+        .send(like)
+        .end((err,response)=> {
+            response.should.have.status(200);
+            response.should.be.a('object');
+            done()
+        });
+    });
+});
+
+
+describe('API', function (){
+    it('It should post a new dislike', (done) => {
+        let dislike = {
+            username: "Ida",
+            disLikedUser: "Erik",
+        }
+        chai.request(server)
+        .post('/interMatchDis')
+        .send(dislike)
         .end((err,response)=> {
             response.should.have.status(200);
             response.should.be.a('object');
