@@ -178,7 +178,6 @@ input[type=text] {
 
 #editBtn1{
     display: inline-block;
-    margin-left: 2%;
     margin-top: 20px;
     color: black;
     background-color: lightgray;
@@ -189,7 +188,7 @@ input[type=text] {
     vertical-align: middle;
     padding: .67em .67em;
     cursor: pointer;
-    width: 18%;
+    width: 11%;
     height: 20%;
 }
 
