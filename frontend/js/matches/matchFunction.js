@@ -1,5 +1,5 @@
 
-//benyttter XHR, refererer til API'et, hvor likes.JSOn er blevet hentet 
+//benyttter XHR, refererer til API'et, hvor likes.JSON er blevet hentet 
 document.addEventListener("DOMContentLoaded", function() {
     const xhr = new XMLHttpRequest();
     xhr.responseType = "json"
@@ -80,7 +80,7 @@ function removeMatchHTML(event) {
     buttonClicked.parentElement.parentElement.remove(); // fjerner den aktuelle html række, for det match, som brugeren ønskede fjernet.
 
     //starter sendUpdate funktionen 
-sendUpdate(buttonClicked.id); // dette id er den person der klikkes på username 
+    sendUpdate(buttonClicked.id); // dette id er den person der klikkes på username 
 
 }
 

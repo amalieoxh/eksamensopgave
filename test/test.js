@@ -7,8 +7,6 @@ var chaiHTTP = require('chai-http');
 chai.should()
 chai.use(chaiHTTP);
 
-
-
 describe('API', function (){
     it('It should post a new like', (done) => {
         let like = {
@@ -25,7 +23,6 @@ describe('API', function (){
         });
     });
 });
-
 
 describe('API', function (){
     it('It should post a new dislike', (done) => {

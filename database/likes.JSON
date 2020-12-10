@@ -48,31 +48,27 @@
     "likedUser": "Regitzepigen"
   },
   {
-    "username": "Erik",
-    "likedUser": "Ida"
-  },
-  {
-    "username": "Erik",
-    "likedUser": "Ida"
-  },
-  {
-    "username": "Erik",
-    "likedUser": "Ida"
-  },
-  {
-    "username": "Erik",
-    "likedUser": "Ida"
-  },
-  {
-    "username": "Erik",
-    "likedUser": "Ida"
-  },
-  {
-    "username": "Erik",
-    "likedUser": "Ida"
+    "username": "LarsMikkelsen",
+    "likedUser": "Jens"
   },
   {
     "username": "LarsMikkelsen",
-    "likedUser": "Jens"
+    "likedUser": "MadsMikkelsen"
+  },
+  {
+    "username": "MadsMikkelsen",
+    "likedUser": "LarsMikkelsen"
+  },
+  {
+    "username": "Ib",
+    "likedUser": "Christian"
+  },
+  {
+    "username": "Ib",
+    "likedUser": "Lars"
+  },
+  {
+    "username": "Ib",
+    "likedUser": "Henrik"
   }
 ]

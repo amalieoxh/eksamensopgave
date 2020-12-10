@@ -13,5 +13,7 @@ deleteUser.addEventListener('click', function() {
         .then(response=>{
                 console.log(response.data)
         })                
+        window.location.replace("./signUp.html")
+
 })
 

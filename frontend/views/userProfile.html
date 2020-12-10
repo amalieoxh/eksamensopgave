@@ -35,15 +35,21 @@
     </nav>
 
 <!-- bruger oplysninger -->
+<br>
 <h1> My Account </h1>
+<br><br>
+<h2> User Information</h2>
+
 
 <p>
-    <a href="editProfile.html">Edit Profile</a>
+    <span class="editUser">
+        <button id="editBtn" class="logOutbtn" type="button"> <a href="editProfile.html">Edit Profile</a></button>
+    </span>
+    
 </p>
 
 <div class = "user">
     <div class="userinformation">
-        <h2> User Information</h2>
         <br/>
         <br/>
 
@@ -98,21 +104,16 @@
         <br/>
     </div>
 
-<!-- ordredata -->
-    <div id="matchHistory">
-        <h3> Matches </h3>
-        <br/>
 
-    </div>
 </div>
 
-<div class="delete-account">
+<span class="delete-account">
     <button id="deleteBtn" class="btn-delete" type="button">Delete your account</button>
-</div>
+</span>
 
-<div id="logOutButton">
-    <button id="logOutBtn" type="button" class="logOutbtn" > Log Out </button>
-    </div>
+<span class="logOut-account">
+    <button id="logOutBtn" class="logOutbtn" type="button"> Log Out </button>
+</span>
 
 
 <!-- linker til JavaScript filerne -->

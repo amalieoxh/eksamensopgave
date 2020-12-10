@@ -1,7 +1,7 @@
 
 //variabel for den bruger, som er logget ind 
 var currentUser = JSON.parse(localStorage.getItem("currentUser"));
-var foundUser = JSON.parse(localStorage.getItem("foundUser"));
+var foundUser = JSON.parse(sessionStorage.getItem("foundUser"));
 
 // henter information fra min User Klasse, som blev oprettet i signUp.js - formålet er at man som bruger kan se sine brugeroplysninger
 document.getElementById("username").value = currentUser.username;

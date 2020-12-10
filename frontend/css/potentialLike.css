@@ -96,12 +96,7 @@ nav{
     background-color: #5d4954;
 }
 
-.logo {
-    color: rgb(226, 226, 226);
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 20px;
-}
+
 
 .nav-links {
     display: flex;

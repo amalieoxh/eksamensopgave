@@ -3,7 +3,7 @@
 //variabel for den bruger, som er logget ind 
 var currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-// henter information fra min User Klasse, som blev oprettet i validation.js - formålet er at man som bruger kan se sine brugeroplysninger
+// henter information fra min User Klasse, som blev oprettet i sign.js - formålet er at man som bruger kan se sine brugeroplysninger
 document.getElementById("username").value = currentUser.username;
 document.getElementById("newAge").value = currentUser.age;
 document.getElementById("newDescription").value = currentUser.description;
@@ -14,7 +14,7 @@ document.getElementById("newAddress").value = currentUser.address;
 document.getElementById("newEmail").value = currentUser.email;
 document.getElementById("newPassword").value = currentUser.password;
 
-editUser = document.getElementById("editBtn")
+editUser = document.getElementById("editBtn1")
 
 function printError(elemId, hintMsg) {
   document.getElementById(elemId).innerHTML = hintMsg;
@@ -167,7 +167,6 @@ function validateFormEdit(event) {
  
 }
 
-
 async function updateUser() {
 var username = document.getElementById("username").value;
 var age = document.getElementById("newAge").value;
@@ -190,12 +189,14 @@ var email = document.getElementById("newEmail").value;
       address: address,
       password : password, 
   }
-
+  
+  localStorage.setItem('currentUser', JSON.stringify(updateData));
 
   axios.put("http://localhost:5000/editProfile/" + username, updateData)
               .then(function(response){
               console.log(response);
-          } 
-                .then(() => window.location = "../view/userProfile.html")
-
-                )}}
+          }
+                )}
+            
+            window.location.replace("./userProfile.html")
+            }

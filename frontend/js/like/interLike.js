@@ -30,31 +30,38 @@ container.innerHTML += '<div class="matchDescription">' + potentialMatch.descrip
 matchContainer.appendChild(container);
 
 //Add A Like button, som gør at detaljerne fra det valgte match kan videreføres til like.js
-var addALike = '<button type="button" onclick="addToLike()" class ="addALikeBtn">Like';
+var addALike = '<button type="button" onclick="likeData()" class ="addALikeBtn">Like';
 container.innerHTML += addALike;
 
-
- // Ved at sætte noget ind i input feltet på html siden, og trykke submit, gemmes dataen i en JSON fil. 
-function addToLike() {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = "json"
-    console.log("hej")
-
-   //henter den bruger der er logget ind og den bruger, der bliver liket 
+function likeData(){
+//henter den bruger der er logget ind og den bruger, der bliver liket 
    let foundUser = JSON.parse(sessionStorage.getItem("founduser"))
    console.log(foundUser)
    let currentUser = JSON.parse(localStorage.getItem("currentUser"))
    console.log(currentUser)
-
-    // Definere det objekt, som skal sendes tilbage til API'et heri skal der være den bruger der udføre liket og den bruger der likes
-    //Pusher current user ind på likesarray indeks 0, og herefter den der likes på indeks 1 
+// Definere det objekt, som skal sendes tilbage til API'et heri skal der være den bruger der udføre liket og den bruger der likes
+//Pusher current user ind på likesarray indeks 0, og herefter den der likes på indeks 1 
     var likes = {
         username : currentUser.username,
         likedUser : foundUser.username
     }
-   
+    sendUpdate(likes); 
 
-    xhr.addEventListener("readystatechange", function() {
+}
+ // Ved at sætte noget ind i input feltet på html siden, og trykke submit, gemmes dataen i en JSON fil. 
+function sendUpdate(likes) {
+    const xhr = new XMLHttpRequest();
+    xhr.responseType = "json"
+    xhr.addEventListener("readystatechange", likeFunction);
+    // Angiver hvilket HTTP request, der arbejdes med, hvor i likes objektet sendes tilbage til API'et 
+    xhr.open("POST", "http://localhost:5000/interMatch", true);
+    // definerer at det er en JSON-fil der skal arbejdes med
+    xhr.setRequestHeader("Content-Type", "application/json");    
+    //sendes liket tilbage til serveren 
+    xhr.send(JSON.stringify(likes));
+}
+
+function likeFunction () {
     if(this.readyState === 4) {
         const respo = this.response 
         console.log(respo); //Til at se, om request kommer tilbage
@@ -63,42 +70,41 @@ function addToLike() {
         }
         window.location.replace("./potentialLike.html")
     }
-    });
-
-    // Angiver hvilket HTTP request, der arbejdes med, hvor i likes objektet sendes tilbage til API'et 
-    xhr.open("POST", "http://localhost:5000/interMatch", true);
-
-    // definerer at det er en JSON-fil der skal arbejdes med
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    //sendes liket tilbage til serveren 
-    xhr.send(JSON.stringify(likes));
-
 }
 
-
 //Dislike knap 
-var disLike = '<button type="button" class ="disLikeBtn" onclick="addDislikes()">Dislike';
+var disLike = '<button type="button" class ="disLikeBtn" onclick="dislikeData()">Dislike';
 container.innerHTML += disLike;
 
+function dislikeData() {
+        //Definere den bruger der likes (foundUser) og den bruger der foretager liket (currentUser)
+        let foundUser = JSON.parse(sessionStorage.getItem("founduser"))
+        console.log(foundUser)
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"))
+        console.log(currentUser)
+    
+        // Pusher current user ind på likesarray indeks 0, og herefter den der likes
+        var dislikes = {
+            username : currentUser.username,
+            disLikedUser : foundUser.username
+        }
+        sendDislikeUpdate(dislikes)
+}
+
 //laver samme stryktur som ved like knappen 
-function addDislikes() {
+function sendDislikeUpdate(dislikes) {
     const xhr = new XMLHttpRequest();
     xhr.responseType = "json"
+    xhr.addEventListener("readystatechange", dislikeFunction);
+    // Angiver hvilket HTTP request, der arbejdes med, hvor i dislikes objektet sendes tilbage til API'et 
+    xhr.open("POST", "http://localhost:5000/interMatchDis", true);
+    // definerer at det er en JSON-fil der skal arbejdes med
+    xhr.setRequestHeader("Content-Type", "application/json");
+    //sendes liket tilbage til serveren 
+    xhr.send(JSON.stringify(dislikes))
+}
 
-    //Definere den bruger der likes (foundUser) og den bruger der foretager liket (currentUser)
-    let foundUser = JSON.parse(sessionStorage.getItem("founduser"))
-    console.log(foundUser)
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"))
-    console.log(currentUser)
-
-    // Pusher current user ind på likesarray indeks 0, og herefter den der likes
-    var disLikes = {
-        username : currentUser.username,
-        disLikedUser : foundUser.username
-    }
-  
-    xhr.addEventListener("readystatechange", function() {
+function dislikeFunction () {
     if(this.readyState === 4) {
         const respo = this.response 
         console.log(respo); //Til at se, om request kommer tilbage
@@ -106,25 +112,8 @@ function addDislikes() {
 
         }
         window.location.replace("./potentialLike.html")
-
-
     }
-    });
-
-    // Angiver hvilket HTTP request, der arbejdes med, hvor i dislikes objektet sendes tilbage til API'et 
-    xhr.open("POST", "http://localhost:5000/interMatchDis", true);
-
-    // definerer at det er en JSON-fil der skal arbejdes med
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    //sendes liket tilbage til serveren 
-    xhr.send(JSON.stringify(disLikes));
-
 }
-
- // window.location: returns the href (URL) of the current page
-
-
 
 
 '</div>'

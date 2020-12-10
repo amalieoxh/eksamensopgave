@@ -16,7 +16,6 @@ app.use((req, res, next) => {
     next();
 })
 
-
 //request til signUp
 app.get('/', (req, res)=> {
     let data = 'Get request virker'

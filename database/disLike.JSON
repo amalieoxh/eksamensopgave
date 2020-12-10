@@ -14,5 +14,17 @@
   {
     "username": "testet",
     "disLikedUser": "Jens"
+  },
+  {
+    "username": "Ib",
+    "disLikedUser": "amalieida"
+  },
+  {
+    "username": "IdaNielsen",
+    "disLikedUser": "Amaliehej"
+  },
+  {
+    "username": "Michael",
+    "disLikedUser": "Jens"
   }
 ]

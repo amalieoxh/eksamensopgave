@@ -108,5 +108,27 @@
     "address": "Testvej 20",
     "email": "amalie.oxholm@gmail.com",
     "password": "1234"
+  },
+  {
+    "username": "MadsMikkelsen",
+    "age": "49",
+    "description": "Jeg er skuespiller ",
+    "phone": "12345678",
+    "city": "Copenhagen",
+    "zip": "2200",
+    "address": "Testvej 20",
+    "email": "test@test.com",
+    "password": "1234"
+  },
+  {
+    "username": "QuentinTarantino",
+    "age": "22",
+    "description": "Jeg er skuespiller ",
+    "phone": "12345678",
+    "city": "Copenhaen",
+    "zip": "2200",
+    "address": "copenhagen",
+    "email": "amalie.oxholm@gmail.com",
+    "password": "Amalie99"
   }
 ]
