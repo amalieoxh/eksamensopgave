@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "API.js",
   "scripts": {
-    "start": "backend/Server/API.js",
+    "start": "nodemon backend/Server/API.js",
     "test": "mocha"
   },
   "author": "",
