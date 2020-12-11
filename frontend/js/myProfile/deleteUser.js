@@ -15,5 +15,7 @@ deleteUser.addEventListener('click', function() {
         })                
         window.location.replace("./signUp.html")
 
+    localStorage.removeItem('currentUser'); 
+
 })
 

@@ -47,14 +47,35 @@ function validateFormEdit(event) {
   var emailErr = true;
 
       // validere age
-  if (age ==""){
-      printError("ageErr", "please enter your age");
-  }
-      
-    //validere description
-  if (description ==""){
-      printError("descriptionErr", "please write a description");
+    if (age ==""){
+        printError("ageErr", "please enter your age");
+    } else {
+        //regex fra stackoverflow
+        var regexage = /[0-9]/;
+        if (regexage.test(age)===false){""
+            printError("ageErr", "please enter a valid age")
+        } else {
+            printError("ageErr", "");
+            ageErr = false;
+        }
     }
+
+    //validere description
+    if (description ==""){
+            printError("descriptionErr", "please write a description");
+            descriptionErr=false;
+        } else {
+            //password regex fra stackoverflow
+            var regexDescription = /^[a-zA-Z\s]+$/
+            if (regexDescription.test(description)===false){
+                printError("descriptionErr", "please enter a description with characters from A-Z");
+            }else {
+                printError("descriptionErr", "");
+                descriptionErr = false;
+            }
+        }
+
+
 
 // email valideres
   if (email =="") {
@@ -144,7 +165,7 @@ function validateFormEdit(event) {
   }
 
 //herefter sørges der for at, hvis nogle af oplysningerne er forkerte, skal storeDetails funktionen ikke køre.
-  if ((usernameErr || phoneErr || cityErr || zipErr || addressErr || emailErr || passwordErr) == true){
+  if ((phoneErr || cityErr || zipErr || addressErr || emailErr || passwordErr) == true){
       return false;
   } else {
   // laver en ny string, som viser hvad der er blevet indtastet 
@@ -156,14 +177,15 @@ function validateFormEdit(event) {
       "City: " + city + "\n" + 
       "ZIP-code: " + zip+ "\n" + 
       "Address: " + address + "\n" + 
-      "username: " + username + "\n" + 
       "Password" ; 
   
 
-      updateUser()
+    alert(detailsPreview);
+    alert("You have now updated your user")
 
 
-      alert("You have now updated your user")
+     updateUser()
+
  
 }
 
